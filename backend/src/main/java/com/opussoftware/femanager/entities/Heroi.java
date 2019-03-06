@@ -29,9 +29,13 @@ public class Heroi {
 	
 	 @ManyToMany
 	    @JoinTable(name="heroi_jogo", joinColumns=
-	    {@JoinColumn(name="heroi")}, inverseJoinColumns=
-	      {@JoinColumn(name="jogo")})
+	    {@JoinColumn(name="heroi_id")}, inverseJoinColumns=
+	      {@JoinColumn(name="jogo_id")})
 	    private List<Jogo> jogos;
+	 
+//	 Não tem necessidade, mas deixei comentado por precaução
+//	 @OneToMany(mappedBy="heroi")
+//	 private List<Heroi_jogador> jogadores;
 	
 	public Heroi() {}
 

@@ -1,8 +1,11 @@
 package com.opussoftware.femanager.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Jogador {
@@ -16,7 +19,8 @@ public class Jogador {
 	private int max_herois;
 	private int num_herois;
 
-	// private Heroi heroi;
+	@OneToMany(mappedBy="jogador")
+	private List<Heroi_jogador> herois;
 
 	public Jogador() {}
 
@@ -59,4 +63,6 @@ public class Jogador {
 	public void setNum_herois(int num_herois) {
 		this.num_herois = num_herois;
 	}
+	
+	// Faltam addHerois e removeHerois
 }
