@@ -16,6 +16,8 @@ public class Jogo {
 	private String nome;
 	private Date ano_lancamento;
 	private String plataforma;
+	
+	// Falta um campo para o relacionamento de heroi e jogo
 
 	public Jogo() {}
 
