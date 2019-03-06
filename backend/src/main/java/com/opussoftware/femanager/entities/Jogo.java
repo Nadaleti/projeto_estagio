@@ -1,10 +1,12 @@
 package com.opussoftware.femanager.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Jogo {
@@ -17,7 +19,8 @@ public class Jogo {
 	private Date ano_lancamento;
 	private String plataforma;
 	
-	// Falta um campo para o relacionamento de heroi e jogo
+	@ManyToMany(mappedBy="jogos")
+    private List<Heroi> herois;
 
 	public Jogo() {}
 
