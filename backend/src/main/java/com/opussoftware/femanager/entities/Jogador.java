@@ -63,6 +63,4 @@ public class Jogador {
 	public void setNum_herois(int num_herois) {
 		this.num_herois = num_herois;
 	}
-	
-	// Faltam addHerois e removeHerois
 }

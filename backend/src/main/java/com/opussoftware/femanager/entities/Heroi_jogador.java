@@ -2,6 +2,7 @@ package com.opussoftware.femanager.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -11,9 +12,11 @@ public class Heroi_jogador {
 	private int id;
 
 	@ManyToOne
+	@JoinColumn
 	private Heroi heroi;
 
 	@ManyToOne
+	@JoinColumn
 	private Jogador jogador;
 
 	private int raridade;
