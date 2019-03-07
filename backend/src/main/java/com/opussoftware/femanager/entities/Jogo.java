@@ -18,7 +18,9 @@ public class Jogo {
 
 	@Size(min = 2, max = 100)
 	private String nome;
+	
 	private Date ano_lancamento;
+	
 	@Size(min = 2, max = 50)
 	private String plataforma;
 

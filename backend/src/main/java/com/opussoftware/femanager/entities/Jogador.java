@@ -20,11 +20,14 @@ public class Jogador {
 
 	@Size(min = 2, max = 50)
 	private String nome;
+	
 	@Size(min = 2, max = 15)
 	private String sexo;
+	
 	@Min(300)
 	@Max(1000)
 	private int max_herois;
+	
 	@Min(0)
 	private int num_herois;
 

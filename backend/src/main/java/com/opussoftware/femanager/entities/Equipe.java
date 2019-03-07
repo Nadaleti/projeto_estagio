@@ -9,6 +9,7 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Equipe {
@@ -17,8 +18,7 @@ public class Equipe {
 	@GeneratedValue
 	private int id;
 
-	@Min(2)
-	@Max(50)
+	@Size(min=2, max=50)
 	private String nome;
 
 	@ManyToOne
