@@ -1,10 +1,16 @@
 package com.opussoftware.femanager.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Equipe {
@@ -19,9 +25,18 @@ public class Equipe {
 	@JoinColumn
 	private Jogador jogador;
 
-	
+	@OneToOne
+	@NotNull
 	private Heroi_jogador heroi_1;
-	private Heroi_jogador heroi_2, heroi_3, heroi_4;
+	
+	@OneToOne
+	private Heroi_jogador heroi_2;	
+	
+	@OneToOne
+	private Heroi_jogador heroi_3;
+	
+	@OneToOne
+	private Heroi_jogador heroi_4;
 
 	public Equipe() {}
 

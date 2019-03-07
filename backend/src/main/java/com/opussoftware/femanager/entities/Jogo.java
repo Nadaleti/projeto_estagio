@@ -28,6 +28,10 @@ public class Jogo {
 		return ano_lancamento;
 	}
 
+	public List<Heroi> getHerois() {
+		return herois;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -42,6 +46,10 @@ public class Jogo {
 
 	public void setAno_lancamento(Date ano_lancamento) {
 		this.ano_lancamento = ano_lancamento;
+	}
+
+	public void setHerois(List<Heroi> herois) {
+		this.herois = herois;
 	}
 
 	public void setId(int id) {
