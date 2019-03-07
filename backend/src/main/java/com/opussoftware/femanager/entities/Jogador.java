@@ -21,6 +21,9 @@ public class Jogador {
 
 	@OneToMany(mappedBy="jogador")
 	private List<Heroi_jogador> herois;
+	
+	@OneToMany(mappedBy="jogador")
+	private List<Equipe> equipes;
 
 	public Jogador() {}
 
