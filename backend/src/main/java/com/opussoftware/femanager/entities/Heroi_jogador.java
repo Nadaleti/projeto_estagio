@@ -1,14 +1,11 @@
 package com.opussoftware.femanager.entities;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 @Entity
 public class Heroi_jogador {
@@ -24,10 +21,26 @@ public class Heroi_jogador {
 	@JoinColumn
 	private Jogador jogador;
 
+	@Min(1)
+	@Max(5)
 	private int raridade;
+	
+	@Min(1)
+	@Max(40)
 	private int level;
 
 	public Heroi_jogador() {}
+
+	public Heroi_jogador(int id, Heroi heroi, Jogador jogador, @Min(1) @Max(5) int raridade,
+			@Min(1) @Max(40) int level) {
+		super();
+		this.id = id;
+		this.heroi = heroi;
+		this.jogador = jogador;
+		this.raridade = raridade;
+		this.level = level;
+	}
+
 
 	public int getId() {
 		return id;

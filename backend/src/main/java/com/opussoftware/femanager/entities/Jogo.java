@@ -7,22 +7,36 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Jogo {
-	
+
 	@Id
 	@GeneratedValue
 	private int id;
-	
+
+	@Size(min = 2, max = 100)
 	private String nome;
 	private Date ano_lancamento;
+	@Size(min = 2, max = 50)
 	private String plataforma;
-	
-	@ManyToMany(mappedBy="jogos")
-    private List<Heroi> herois;
 
-	public Jogo() {}
+	@ManyToMany(mappedBy = "jogos")
+	private List<Heroi> herois;
+
+	public Jogo() {
+	}
+
+	public Jogo(int id, @Size(min = 2, max = 100) String nome, Date ano_lancamento,
+			@Size(min = 2, max = 50) String plataforma, List<Heroi> herois) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.ano_lancamento = ano_lancamento;
+		this.plataforma = plataforma;
+		this.herois = herois;
+	}
 
 	public Date getAno_lancamento() {
 		return ano_lancamento;
@@ -63,5 +77,5 @@ public class Jogo {
 	public void setPlataforma(String plataforma) {
 		this.plataforma = plataforma;
 	}
-	
+
 }
