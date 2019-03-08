@@ -1,10 +1,10 @@
 package com.opussoftware.femanager.entities;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.Size;
@@ -13,13 +13,13 @@ import javax.validation.constraints.Size;
 public class Jogo {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	@Size(min = 2, max = 100)
 	private String nome;
 	
-	private Date ano_lancamento;
+	private int ano_lancamento;
 	
 	@Size(min = 2, max = 50)
 	private String plataforma;
@@ -30,7 +30,7 @@ public class Jogo {
 	public Jogo() {
 	}
 
-	public Jogo(int id, @Size(min = 2, max = 100) String nome, Date ano_lancamento,
+	public Jogo(int id, @Size(min = 2, max = 100) String nome, int ano_lancamento,
 			@Size(min = 2, max = 50) String plataforma, List<Heroi> herois) {
 		super();
 		this.id = id;
@@ -40,7 +40,7 @@ public class Jogo {
 		this.herois = herois;
 	}
 
-	public Date getAno_lancamento() {
+	public int getAno_lancamento() {
 		return ano_lancamento;
 	}
 
@@ -60,7 +60,7 @@ public class Jogo {
 		return plataforma;
 	}
 
-	public void setAno_lancamento(Date ano_lancamento) {
+	public void setAno_lancamento(int ano_lancamento) {
 		this.ano_lancamento = ano_lancamento;
 	}
 
