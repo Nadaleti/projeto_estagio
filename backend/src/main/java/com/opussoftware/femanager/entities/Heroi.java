@@ -18,7 +18,7 @@ public class Heroi {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 
 	@Size(min = 2, max = 50)
 	private String nome;
@@ -62,7 +62,7 @@ public class Heroi {
 	public Heroi() {
 	}
 
-	public Heroi(int id, @Size(min = 2, max = 50) String nome, @Size(min = 2, max = 100) String alcunha,
+	public Heroi(Long id, @Size(min = 2, max = 50) String nome, @Size(min = 2, max = 100) String alcunha,
 			@Min(0) @Max(100) int hp, @Min(0) @Max(100) int atk, @Min(0) @Max(100) int spd, @Min(0) @Max(100) int def,
 			@Min(0) @Max(100) int res, @Size(min = 2, max = 50) String classe,
 			@Size(min = 2, max = 50) String movimentacao, String img, List<Jogo> jogos) {
@@ -104,7 +104,7 @@ public class Heroi {
 		return hp;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -152,7 +152,7 @@ public class Heroi {
 		this.hp = hp;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

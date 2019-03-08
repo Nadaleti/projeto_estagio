@@ -17,7 +17,7 @@ public class Jogador {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 
 	@Size(min = 2, max = 50)
 	private String nome;
@@ -44,7 +44,7 @@ public class Jogador {
 	public Jogador() {
 	}
 
-	public Jogador(int id, @Size(min = 2, max = 50) String nome, @Size(min = 2, max = 15) String sexo,
+	public Jogador(Long id, @Size(min = 2, max = 50) String nome, @Size(min = 2, max = 15) String sexo,
 			@Min(300) @Max(1000) int max_herois, @Min(0) int num_herois, List<Heroi_jogador> herois,
 			List<Equipe> equipes, Heroi_jogador heroi_suporte) {
 		super();
@@ -70,7 +70,7 @@ public class Jogador {
 		return herois;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -102,7 +102,7 @@ public class Jogador {
 		this.herois = herois;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -1,5 +1,6 @@
 package com.opussoftware.femanager.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +18,7 @@ public class Equipe {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 
 	@Size(min=2, max=50)
 	private String nome;
@@ -41,7 +42,7 @@ public class Equipe {
 
 	public Equipe() {}
 
-	public Equipe(int id, @Min(2) @Max(50) String nome, Jogador jogador, @NotNull Heroi_jogador heroi_1,
+	public Equipe(Long id, @Min(2) @Max(50) String nome, Jogador jogador, @NotNull Heroi_jogador heroi_1,
 			Heroi_jogador heroi_2, Heroi_jogador heroi_3, Heroi_jogador heroi_4) {
 		super();
 		this.id = id;
@@ -71,7 +72,7 @@ public class Equipe {
 		return heroi_4;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -99,7 +100,7 @@ public class Equipe {
 		this.heroi_4 = heroi_4;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

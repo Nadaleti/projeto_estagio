@@ -14,7 +14,7 @@ public class Heroi_jogador {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 
 	@ManyToOne
 	@JoinColumn
@@ -34,7 +34,7 @@ public class Heroi_jogador {
 
 	public Heroi_jogador() {}
 
-	public Heroi_jogador(int id, Heroi heroi, Jogador jogador, @Min(1) @Max(5) int raridade,
+	public Heroi_jogador(Long id, Heroi heroi, Jogador jogador, @Min(1) @Max(5) int raridade,
 			@Min(1) @Max(40) int level) {
 		super();
 		this.id = id;
@@ -45,11 +45,11 @@ public class Heroi_jogador {
 	}
 
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
