@@ -1,0 +1,45 @@
+$gold: #978325;
+
+.container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.sidenav {
+    background-color: #444444;
+    width: 300px;
+
+    mat-expansion-panel {
+        background-color: #565656;
+    }
+
+    mat-expansion-panel, mat-panel-title {
+        color: #bbb;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding-left: 25px;
+
+        li {
+            margin-bottom: 10px;
+
+            a {
+                text-decoration: none;
+                color: #bbb;
+            }
+
+            a:hover {
+                color: $gold;
+            }
+        }
+    }
+}
+
+.content {
+    background-color: #e0e0e0;
+}
