@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.opussoftware.femanager.entities.Jogo;
+import com.opussoftware.femanager.models.JogoModel;
 import com.opussoftware.femanager.repositories.JogoRepository;
 
 @Service
@@ -18,11 +19,21 @@ public class JogoService {
 	private JogoRepository jogoRepository;
 
 	// Get all jogos
-	public List<Jogo> getAllJogos() {
-		Pageable page_def = PageRequest.of(0, 2);
-		Page<Jogo> p = this.jogoRepository.findAll(page_def);
+	public JogoModel getAllJogos(int page, int size) {
+		List<Jogo> jogos = this.jogoRepository.findAll();
+		int total = jogos.size();
+		
+		int from = (page * size);
+		int to = (from + size) > total ? total : (from + size);
+		
+		List<Jogo> jogoPage = jogos.subList(from, to);
 
-		return p.getContent();
+		return new JogoModel(jogoPage, total);
+	}
+	
+	// Retorna o total de jogos
+	public Integer totalOfJogos() {
+		return this.jogoRepository.findAll().size();
 	}
 
 	// Get um jogo

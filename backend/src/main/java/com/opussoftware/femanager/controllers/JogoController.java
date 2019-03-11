@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.opussoftware.femanager.entities.Jogo;
+import com.opussoftware.femanager.models.JogoModel;
 import com.opussoftware.femanager.services.JogoService;
 
 @RestController
@@ -25,8 +26,8 @@ public class JogoController {
 
 	// Get all jogos
 	@GetMapping(path = "/jogos")
-	public List<Jogo> getAllJogos() {
-		return jogoService.getAllJogos();
+	public JogoModel getAllJogos(@RequestParam("page") int page, @RequestParam("pageSize") int size) {
+		return jogoService.getAllJogos(page, size);
 	}
 
 	// Get um jogo

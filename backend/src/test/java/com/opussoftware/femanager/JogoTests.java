@@ -16,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.opussoftware.femanager.entities.Jogo;
+import com.opussoftware.femanager.models.JogoModel;
 import com.opussoftware.femanager.services.JogoService;
 
 @RunWith(SpringRunner.class)
@@ -33,11 +34,14 @@ public class JogoTests {
 	
 	@Test
 	public void getTwoJogos() {
-		List<Jogo> jogos = this.jogoService.getAllJogos();
+		int page = 0;
+		int size = 3;
+		
+		JogoModel jogos = this.jogoService.getAllJogos(page, size);
 		
 		System.out.println(jogos);
 		
-		assertEquals(2, jogos.size());
+		assertEquals(size, jogos.getJogos().size());
 	}
 	
 	@Test
