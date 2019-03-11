@@ -9,6 +9,7 @@ import { tap, map } from 'rxjs/operators';
     templateUrl: './jogo-list.component.html',
     styleUrls: ['./jogo-list.component.scss']
 })
+
 export class JogoListComponent implements OnInit {
     jogoDataSource: JogoDataSource;
     columnsOrder = ['nome', 'plat', 'ano'];

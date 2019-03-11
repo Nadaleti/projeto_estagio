@@ -7,11 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatSidenavModule, MatExpansionModule, MatTableModule, MatPaginatorModule } from '@angular/material';
 import { JogoListComponent } from './components/jogo-list/jogo-list.component';
+import { HeroiListComponent } from './components/heroi-list/heroi-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    JogoListComponent
+    JogoListComponent,
+    HeroiListComponent
   ],
   imports: [
     BrowserModule,
