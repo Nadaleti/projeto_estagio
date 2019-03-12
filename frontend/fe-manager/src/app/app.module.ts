@@ -5,7 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MatSidenavModule, MatExpansionModule, MatTableModule, MatPaginatorModule } from '@angular/material';
+import { MatSidenavModule, MatExpansionModule, MatTableModule, 
+  MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, 
+  MatSortModule} from '@angular/material';
 import { JogoListComponent } from './components/jogo-list/jogo-list.component';
 import { HeroiListComponent } from './components/heroi-list/heroi-list.component';
 
@@ -23,7 +25,10 @@ import { HeroiListComponent } from './components/heroi-list/heroi-list.component
     MatSidenavModule,
     MatExpansionModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule,
+    MatInputModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

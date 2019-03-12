@@ -1,4 +1,5 @@
 export class Heroi{
+    id: number;
     nome: String;
     alcunha: String;
     hp: number;
