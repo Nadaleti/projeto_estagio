@@ -28,12 +28,6 @@ public class JogoController {
 		return jogoService.getAllJogos(page, size, filter);
 	}
 
-	// Get um jogo
-	@GetMapping(path = "/jogos/{id}")
-	public ResponseEntity<Jogo> getOneJogo(@PathVariable Long id) {
-		return ResponseEntity.of(this.jogoService.getOneJogo(id));
-	}
-
 	// Criar jogo
 	@PostMapping(path = "/jogos")
 	public ResponseEntity<Object> saveJogo(@RequestBody Jogo jogo) {
@@ -57,7 +51,7 @@ public class JogoController {
 	// Atualizar jogo
 	@PutMapping(path = "/jogos/{id}")
 	public ResponseEntity<Object> updateJogo(@RequestBody Jogo jogo, @PathVariable Long id) {
-		if (this.jogoService.updateJogo(jogo, id) != null) {
+		if (this.jogoService.updateJogo(jogo, id) == null) {
 			return ResponseEntity.notFound().build();
 		}
 

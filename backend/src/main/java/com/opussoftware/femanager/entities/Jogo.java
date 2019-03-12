@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Jogo {
 
@@ -24,6 +26,7 @@ public class Jogo {
 	@Size(min = 2, max = 50)
 	private String plataforma;
 
+	@JsonIgnore
 	@ManyToMany(mappedBy = "jogos")
 	private List<Heroi> herois;
 

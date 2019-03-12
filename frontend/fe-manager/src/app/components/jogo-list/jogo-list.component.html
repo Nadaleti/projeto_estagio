@@ -25,7 +25,7 @@
         <!-- Botão de edição -->
         <ng-container matColumnDef="button">
             <th mat-header-cell *matHeaderCellDef></th>
-            <td class="button" mat-cell *matCellDef=""><button mat-icon-button><mat-icon>create</mat-icon></button></td>
+            <td class="button" mat-cell *matCellDef="let jogo"><button mat-icon-button (click)="edit(jogo)"><mat-icon>create</mat-icon></button></td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="columnsOrder"></tr>
@@ -34,3 +34,4 @@
     <mat-paginator [length]="jogoDataSource.total$ | async" [pageSize]="5"
                 [pageSizeOptions]="[5, 10]"></mat-paginator>
 </div>
+<button mat-fab (click)="create()" class="add-btn"><mat-icon>add</mat-icon></button>

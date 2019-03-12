@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { JogoDataSource } from './jogoDataSource';
 import { JogoService } from 'src/app/services/jogo.service';
-import { MatPaginator } from '@angular/material';
+import { MatPaginator, MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
 import { tap, distinctUntilChanged, debounce, debounceTime, switchMap } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { JogoModalComponent } from '../jogo-modal/jogo-modal.component';
+import { Jogo } from 'src/app/models/jogo';
 
 @Component({
     selector: 'app-jogo-list',
@@ -19,7 +20,8 @@ export class JogoListComponent implements OnInit {
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
-    constructor(private jogoService: JogoService) { }
+    constructor(private jogoService: JogoService,
+                private dialog: MatDialog) { }
 
     ngOnInit() {
         this.jogoDataSource = new JogoDataSource(this.jogoService);
@@ -37,5 +39,42 @@ export class JogoListComponent implements OnInit {
     findByNomeOrPlatform(term: string): void {
         this.term = term;
         this.jogoDataSource.loadJogos(0, 5, this.term);
+    }
+
+    openDialog(jogo: Jogo, title: string): MatDialogRef<JogoModalComponent> {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.width = '600px';
+        dialogConfig.data = {
+            title: title,
+            jogo: jogo
+        }
+
+        return this.dialog.open(JogoModalComponent, dialogConfig);
+    }
+
+    edit(jogo: Jogo) {
+        let dialogRef = this.openDialog(jogo, 'Editar');
+
+        dialogRef.afterClosed().subscribe(
+            data => {
+                if (data) {
+                    this.jogoDataSource.updateJogo(jogo);
+                    this.jogoDataSource.loadJogos(this.paginator.pageIndex, this.paginator.pageSize, this.term);
+                }
+            }
+        );
+    }
+
+    create() {
+        let dialogRef = this.openDialog(null, 'Novo Jogo');
+
+        dialogRef.afterClosed().subscribe(
+            data => {
+                if (data) {
+                    this.jogoDataSource.createJogo(data);
+                    this.jogoDataSource.loadJogos(this.paginator.pageIndex, this.paginator.pageSize, this.term);
+                }
+            }
+        );
     }
 }

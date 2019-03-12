@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { JogoModel } from '../models/jogoModel';
+import { Jogo } from '../models/jogo';
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -28,4 +29,11 @@ export class JogoService {
         return this.http.get<JogoModel>(this.jogoUrl, httpOptions);
     }
 
+    updateJogo(jogo: Jogo): Observable<Jogo> {
+        return this.http.put<Jogo>(this.jogoUrl+'/'+jogo.id, jogo);
+    }
+
+    createJogo(jogo: Jogo): Observable<Jogo> {
+        return this.http.post<Jogo>(this.jogoUrl, jogo);
+    }
 }

@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>{{modalTitle}}</h2>
+
+<mat-dialog-content>
+    <form [formGroup]="jogoForm" (ngSubmit)="save()" id="jogoForm">
+        <div class="form-content">
+            <mat-form-field>
+                <mat-label>Título</mat-label>
+                <input matInput type="text" placeholder="Título do jogo" formControlName="titulo">
+            </mat-form-field>
+        </div>
+        <div class="form-content">
+            <mat-form-field class="form-field">
+                <mat-label>Plataforma</mat-label>
+                <input matInput type="text" placeholder="Plataforma" formControlName="plataforma">
+            </mat-form-field>
+            <mat-form-field class="form-field">
+                <mat-label>Ano de lançamento</mat-label>
+                <input matInput type="text" placeholder="AAAA" formControlName="ano">
+            </mat-form-field>
+        </div>
+        <input type="hidden" formControlName="id">
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button (click)="close()" class="mat-raised-button mat-warn">Fechar</button>
+    <button class="mat-raised-button mat-primary" form="jogoForm" [disabled]="!jogoForm.valid">Salvar</button>
+</mat-dialog-actions>

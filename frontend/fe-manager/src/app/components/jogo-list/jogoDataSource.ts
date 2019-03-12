@@ -30,4 +30,14 @@ export class JogoDataSource extends DataSource<Jogo> {
             )
             .subscribe();
     }
+
+    updateJogo(jogo: Jogo) {
+        this.jogoService.updateJogo(jogo)
+            .subscribe();
+    }
+
+    createJogo(jogo: Jogo) {
+        this.jogoService.createJogo(jogo)
+            .subscribe();
+    }
 }

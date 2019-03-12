@@ -33,11 +33,6 @@ public class JogoService {
 		}
 	}
 
-	// Get um jogo
-	public Optional<Jogo> getOneJogo(Long id) {
-		return this.jogoRepository.findById(id);
-	}
-
 	// Criar jogo
 	public Jogo saveJogo(Jogo jogo) {
 		return this.jogoRepository.saveAndFlush(jogo);
