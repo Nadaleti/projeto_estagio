@@ -18,16 +18,15 @@ export class HeroiService {
 
   constructor(private http: HttpClient) { }
 
-  heroiUrl = 'http://localhost:8080/heroi';
+  heroiUrl = 'http://localhost:8080/herois';
 
-    getHerois(page: number, size: number) : Observable<HeroiModel> {
-        httpOptions.params = httpOptions.params
-            .set('page', page.toString())
-            .set('pageSize', size.toString())
-            .set('observe', 'response');
-        
-        return this.http.get<HeroiModel>(this.heroiUrl, httpOptions);
-    
-    }
+  getHerois(page: number, size: number) : Observable<HeroiModel> {
+      httpOptions.params = httpOptions.params
+          .set('page', page.toString())
+          .set('pageSize', size.toString());
+      
+      return this.http.get<HeroiModel>(this.heroiUrl, httpOptions);
+  
+  }
 
 }

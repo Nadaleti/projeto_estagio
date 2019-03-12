@@ -1,4 +1,4 @@
-<table mat-table class="herois-table mat-elevation-z8" [dataSource] = "heroiDataSource">
+<table mat-table class="herois-table mat-elevation-z8" [dataSource] = "heroiDatasource">
 
     <!-- Coluna Nome -->
     <ng-container matColumnDef="nome">
@@ -27,5 +27,6 @@
     <tr mat-header-row *matHeaderRowDef="columnsOrder"></tr>
     <tr mat-row *matRowDef="let row; columns: columnsOrder"></tr>
 </table>
-<mat-paginator [length]="heroiDataSource.total$ | async" [pageSize]="5"
+
+<mat-paginator [length]="heroiDatasource.total$ | async" [pageSize]="5"
                [pageSizeOptions]="[5, 10]"></mat-paginator>
