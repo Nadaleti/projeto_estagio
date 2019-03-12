@@ -19,11 +19,11 @@ export class JogoService {
 
     jogoUrl = 'http://localhost:8080/jogos';
 
-    getJogos(page: number, size: number) : Observable<JogoModel> {
+    getJogos(page: number, size: number, filter: string) : Observable<JogoModel> {
         httpOptions.params = httpOptions.params
             .set('page', page.toString())
             .set('pageSize', size.toString())
-            .set('observe', 'response');
+            .set('filter', filter);
         
         return this.http.get<JogoModel>(this.jogoUrl, httpOptions);
     }

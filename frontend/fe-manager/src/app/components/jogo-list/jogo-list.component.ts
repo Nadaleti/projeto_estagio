@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { JogoDataSource } from './jogoDataSource';
 import { JogoService } from 'src/app/services/jogo.service';
 import { MatPaginator } from '@angular/material';
-import { tap, map } from 'rxjs/operators';
+import { tap, distinctUntilChanged, debounce, debounceTime, switchMap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
     selector: 'app-jogo-list',
@@ -11,8 +12,10 @@ import { tap, map } from 'rxjs/operators';
 })
 export class JogoListComponent implements OnInit {
     jogoDataSource: JogoDataSource;
-    columnsOrder = ['nome', 'plat', 'ano'];
+    columnsOrder = ['nome', 'plat', 'ano', 'button'];
     totalOfItems: number;
+
+    private term: string = '';
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -20,14 +23,19 @@ export class JogoListComponent implements OnInit {
 
     ngOnInit() {
         this.jogoDataSource = new JogoDataSource(this.jogoService);
-        this.jogoDataSource.loadJogos(0, 5);
+        this.jogoDataSource.loadJogos(0, 5, this.term);
     }
 
     ngAfterViewInit() {
         this.paginator.page
             .pipe(
-                tap(() => this.jogoDataSource.loadJogos(this.paginator.pageIndex, this.paginator.pageSize))
+                tap(() => this.jogoDataSource.loadJogos(this.paginator.pageIndex, this.paginator.pageSize, this.term))
             )
             .subscribe();
+    }
+
+    findByNomeOrPlatform(term: string): void {
+        this.term = term;
+        this.jogoDataSource.loadJogos(0, 5, this.term);
     }
 }

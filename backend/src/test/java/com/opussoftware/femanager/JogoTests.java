@@ -37,7 +37,7 @@ public class JogoTests {
 		int page = 0;
 		int size = 3;
 		
-		JogoModel jogos = this.jogoService.getAllJogos(page, size);
+		JogoModel jogos = this.jogoService.getAllJogos(page, size,"");
 		
 		System.out.println(jogos);
 		

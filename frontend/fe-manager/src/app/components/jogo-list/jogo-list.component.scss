@@ -1,4 +1,24 @@
-mat-paginator, .jogos-table {
+.container {
     width: 90%;
     margin: 0 auto;
+
+    table, mat-paginator, mat-form-field {
+        width: 100%;
+
+        .nome {
+            width: 55%;
+        }
+
+        .plat {
+            width: 25%;
+        }
+
+        .ano {
+            width: 15%;
+        }
+
+        .button {
+            width: 5%;
+        }
+    }
 }
