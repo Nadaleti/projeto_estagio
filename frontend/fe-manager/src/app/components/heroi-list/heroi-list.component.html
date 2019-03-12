@@ -10,19 +10,19 @@
     </ng-container>
 
     <!-- Coluna Alcunha -->
-    <ng-container matColumnDef="alc">
+    <ng-container matColumnDef="alcunha">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Alcunha </th>
         <td mat-cell *matCellDef="let heroi">{{heroi.alcunha}}</td>
     </ng-container>
 
     <!-- Coluna Classe -->
-    <ng-container matColumnDef="clas">
+    <ng-container matColumnDef="classe">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Classe </th>
         <td mat-cell *matCellDef="let heroi">{{heroi.classe}}</td>
     </ng-container>
 
     <!-- Coluna Movimentação -->
-    <ng-container matColumnDef="mov">
+    <ng-container matColumnDef="movimentacao">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Movimentação </th>
         <td mat-cell *matCellDef="let heroi">{{heroi.movimentacao}}</td>
     </ng-container>
@@ -33,5 +33,5 @@
         (click)="onHeroClick(row)"></tr>
 </table>
 
-<mat-paginator [length]="heroiDatasource.total$ | async" [pageSize]="5"
-               [pageSizeOptions]="[5, 10]"></mat-paginator>
+<mat-paginator [length]="heroiDatasource.total$ | async" [pageSize]="10"
+               [pageSizeOptions]="[5, 7, 10, 15]"></mat-paginator>

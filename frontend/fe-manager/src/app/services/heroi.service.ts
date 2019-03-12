@@ -20,12 +20,12 @@ export class HeroiService {
 
   heroiUrl = 'http://localhost:8080/herois';
 
-  getHerois(page: number, size: number) : Observable<HeroiModel> {
+  getHerois(page: number, size: number, sortParam: String, sortType: String) : Observable<HeroiModel> {
       httpOptions.params = httpOptions.params
           .set('page', page.toString())
           .set('pageSize', size.toString())
-          .set('sortParam', 'nome'.toString())
-          .set('sortType', 'asc'.toString())
+          .set('sortParam', sortParam.toString())
+          .set('sortType', sortType.toString())
 
       return this.http.get<HeroiModel>(this.heroiUrl, httpOptions);
   
