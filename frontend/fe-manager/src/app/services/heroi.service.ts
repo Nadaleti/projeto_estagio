@@ -23,8 +23,10 @@ export class HeroiService {
   getHerois(page: number, size: number) : Observable<HeroiModel> {
       httpOptions.params = httpOptions.params
           .set('page', page.toString())
-          .set('pageSize', size.toString());
-      
+          .set('pageSize', size.toString())
+          .set('sortParam', 'nome'.toString())
+          .set('sortType', 'asc'.toString())
+
       return this.http.get<HeroiModel>(this.heroiUrl, httpOptions);
   
   }

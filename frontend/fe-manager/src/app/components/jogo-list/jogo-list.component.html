@@ -1,3 +1,4 @@
+<!-- Tabela Listando os jogos-->
 <table mat-table class="jogos-table mat-elevation-z8" [dataSource] = "jogoDataSource">
 
     <!-- Coluna título -->
@@ -22,4 +23,4 @@
     <tr mat-row *matRowDef="let row; columns: columnsOrder"></tr>
 </table>
 <mat-paginator [length]="jogoDataSource.total$ | async" [pageSize]="5"
-               [pageSizeOptions]="[5, 10]"></mat-paginator>
+            [pageSizeOptions]="[5, 10]"></mat-paginator>

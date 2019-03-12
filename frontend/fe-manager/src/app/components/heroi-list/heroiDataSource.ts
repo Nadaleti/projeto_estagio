@@ -20,7 +20,6 @@ export class HeroiDatasource extends DataSource<Heroi> {
 
     disconnect(collectionViewer: CollectionViewer): void {
         this.heroiSubject.complete();
-        this.total.complete();
     }
 
     loadHerois(page: number, size: number) {

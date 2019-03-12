@@ -16,9 +16,5 @@ public class HeroisTests {
 	@Before
 	public void init() {}
 	
-	@Test
-	public void heroi() {
-		assertEquals(5, this.heroiService.getAllHeroi(5, 5).getHerois().size() );
-	}
 
 }

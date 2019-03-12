@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HeroiDatasource } from './heroiDataSource';
 import { HeroiService } from 'src/app/services/heroi.service';
-import { MatPaginator } from '@angular/material';
+import { MatPaginator, MatSort } from '@angular/material';
 import { tap } from 'rxjs/operators';
 
 @Component({
@@ -17,6 +17,7 @@ export class HeroiListComponent implements OnInit {
   totalOfItems: number;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private heroiService: HeroiService) { }
 
@@ -26,11 +27,15 @@ export class HeroiListComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+    //this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
     this.paginator.page
         .pipe(
             tap(() => this.heroiDatasource.loadHerois(this.paginator.pageIndex, this.paginator.pageSize))
         )
         .subscribe();
-}
+  }
 
+  onHeroClick(row){
+    console.log('Cliquei em: Id:', row.id, '. Heroi: ', row.nome, ' - ', row.alcunha);
+  }
 }

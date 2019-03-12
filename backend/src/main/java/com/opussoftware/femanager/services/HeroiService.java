@@ -4,10 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.opussoftware.femanager.entities.Heroi;
-import com.opussoftware.femanager.entities.Jogo;
 import com.opussoftware.femanager.models.HeroiModel;
 import com.opussoftware.femanager.repositories.HeroiRepository;
 
@@ -17,8 +18,12 @@ public class HeroiService {
 	private HeroiRepository heroiRepository;
 	
 	//Get todos herois
-	public HeroiModel getAllHeroi(int page, int pageSize){
-		List<Heroi> herois = heroiRepository.findAll();
+	public HeroiModel getAllHeroi(int page, int pageSize, String sortParam, String sortType){
+		
+		Direction x = (sortType.equals("asc")) ? Direction.ASC : Direction.DESC;
+		Sort sort = new Sort(x, sortParam);
+		
+		List<Heroi> herois = heroiRepository.findAll(sort);
 		
 		int total = herois.size();
 		int from = page * pageSize;

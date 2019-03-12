@@ -25,8 +25,11 @@ public class HeroiController {
 	
 	// Get all herois
 		@GetMapping(path = "/herois")
-		public HeroiModel getAllHerois(@RequestParam("page") int page, @RequestParam("pageSize") int pageSize) {
-			return heroiService.getAllHeroi(page, pageSize);
+		public HeroiModel getAllHerois(@RequestParam("page") int page, 
+				@RequestParam("pageSize") int pageSize, @RequestParam("sortParam") String sortParam,
+				@RequestParam("sortType") String sortType) {
+			System.out.println(sortParam + " " + sortType);
+			return heroiService.getAllHeroi(page, pageSize, sortParam, sortType);
 		}
 
 		// Get um heroi
