@@ -58,8 +58,7 @@ export class JogoListComponent implements OnInit {
         dialogRef.afterClosed().subscribe(
             data => {
                 if (data) {
-                    this.jogoDataSource.updateJogo(jogo);
-                    this.jogoDataSource.loadJogos(this.paginator.pageIndex, this.paginator.pageSize, this.term);
+                    this.jogoDataSource.updateJogo(data, this.paginator.pageIndex, this.paginator.pageSize, this.term);
                 }
             }
         );
@@ -72,7 +71,6 @@ export class JogoListComponent implements OnInit {
             data => {
                 if (data) {
                     this.jogoDataSource.createJogo(data);
-                    this.jogoDataSource.loadJogos(this.paginator.pageIndex, this.paginator.pageSize, this.term);
                 }
             }
         );

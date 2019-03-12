@@ -31,9 +31,9 @@ export class JogoDataSource extends DataSource<Jogo> {
             .subscribe();
     }
 
-    updateJogo(jogo: Jogo) {
+    updateJogo(jogo: Jogo, page: number, pageSize: number, term: string) {
         this.jogoService.updateJogo(jogo)
-            .subscribe();
+            .subscribe(_ => this.loadJogos(page, pageSize, term));
     }
 
     createJogo(jogo: Jogo) {
