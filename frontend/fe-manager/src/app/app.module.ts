@@ -7,13 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { MatSidenavModule, MatExpansionModule, MatTableModule, 
   MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, 
   MatSortModule, MatFormFieldModule,  MatIconModule, MatButtonModule,
-  MatDialogModule, MatButtonToggleModule} from '@angular/material';
+  MatDialogModule, MatButtonToggleModule, MatAutocompleteModule } from '@angular/material';
 
 import { JogoListComponent } from './components/jogo-list/jogo-list.component';
 import { HeroiListComponent } from './components/heroi-list/heroi-list.component';
 import { AppComponent } from './app.component';
 import { JogoModalComponent } from './components/jogo-modal/jogo-modal.component';
 import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
+import { SummonComponent } from './components/summon/summon.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { DeleteModalComponent } from './components/delete-modal/delete-modal.com
     JogoListComponent,
     HeroiListComponent,
     JogoModalComponent,
-    DeleteModalComponent
+    DeleteModalComponent,
+    SummonComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ import { DeleteModalComponent } from './components/delete-modal/delete-modal.com
     MatButtonModule,
     MatDialogModule,
     MatButtonToggleModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent],
