@@ -31,7 +31,7 @@ public class JogoController {
 	// Criar jogo
 	@PostMapping(path = "/jogos")
 	public ResponseEntity<Object> saveJogo(@RequestBody Jogo jogo) {
-		if (this.jogoService.saveJogo(jogo) != null) {
+		if (this.jogoService.saveJogo(jogo) == null) {
 			return ResponseEntity.badRequest().build();
 		}
 

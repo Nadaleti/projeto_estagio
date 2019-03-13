@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { Jogo } from 'src/app/models/jogo';
 
@@ -9,17 +9,18 @@ import { Jogo } from 'src/app/models/jogo';
     styleUrls: ['./jogo-modal.component.scss']
 })
 export class JogoModalComponent implements OnInit {
-    jogoForm = new FormGroup({
-        titulo: new FormControl('', [Validators.required]),
-        ano: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]),
-        plataforma: new FormControl('', [Validators.required]),
-        id: new FormControl('')
+    jogoForm = this.fb.group({
+        titulo: ['', [Validators.required]],
+        ano: ['', [Validators.required]],
+        plataforma: ['', [Validators.required]],
+        id: ['']
     });
 
     modalTitle: string;
 
     constructor(private dialogRef: MatDialogRef<JogoModalComponent>,
-                @Inject(MAT_DIALOG_DATA) data) {
+                @Inject(MAT_DIALOG_DATA) data,
+                private fb: FormBuilder) {
 
         this.modalTitle = data.title;
         if (data.jogo !== null) {
@@ -36,6 +37,10 @@ export class JogoModalComponent implements OnInit {
 
     getErrorMessage() {
         return 'O campo é obrigatório';
+    }
+
+    getErrorMessageAno() {
+        return this.jogoForm.get('ano').hasError('minlength') ? 'São necessários 4 digítos' : 'O campo é obrigatório';
     }
 
     close() {

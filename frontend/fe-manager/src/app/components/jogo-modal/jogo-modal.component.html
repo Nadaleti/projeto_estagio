@@ -6,16 +6,19 @@
             <mat-form-field>
                 <mat-label>Título</mat-label>
                 <input matInput type="text" placeholder="Título do jogo" formControlName="titulo">
+                <mat-error *ngIf="fb.status === invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
         </div>
         <div class="form-content">
             <mat-form-field class="form-field">
                 <mat-label>Plataforma</mat-label>
                 <input matInput type="text" placeholder="Plataforma" formControlName="plataforma">
+                <mat-error *ngIf="fb.status === invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
             <mat-form-field class="form-field">
                 <mat-label>Ano de lançamento</mat-label>
-                <input matInput type="text" placeholder="AAAA" formControlName="ano">
+                <input matInput type="text" placeholder="AAAA" formControlName="ano" minlength="4" maxlength="4">
+                <mat-error *ngIf="fb.status === invalid">{{getErrorMessageAno()}}</mat-error>
             </mat-form-field>
         </div>
         <input type="hidden" formControlName="id">

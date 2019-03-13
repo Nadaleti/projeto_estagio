@@ -1,26 +1,37 @@
-.container {
-    width: 90%;
-    margin: 0 auto;
+@import '~@angular/material/theming';
 
-    table, mat-paginator, mat-form-field {
-        width: 100%;
+$config: mat-typography-config();
 
-        .nome {
-            width: 55%;
-        }
+table, mat-paginator, mat-form-field {
+    width: 100%;
 
-        .plat {
-            width: 25%;
-        }
-
-        .ano {
-            width: 15%;
-        }
-
-        .button {
-            width: 5%;
-        }
+    .nome {
+        width: 55%;
     }
+
+    .plat {
+        width: 25%;
+    }
+
+    .ano {
+        width: 15%;
+    }
+
+    .button {
+        width: 5%;
+    }
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+div {
+    font-size: 1.1em;
+    font-style: italic; 
+    color: #aaa9a9;
+    background-color: white;
+    padding: 1em;
 }
 
 .add-btn {

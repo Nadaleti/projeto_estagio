@@ -75,4 +75,10 @@ export class JogoListComponent implements OnInit {
             }
         );
     }
+
+    zeroItems(): boolean {
+        let isZero: boolean;
+        this.jogoDataSource.total$.subscribe(total => { isZero = total === 0 });
+        return isZero;
+    }
 }
