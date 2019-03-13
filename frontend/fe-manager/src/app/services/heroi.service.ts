@@ -26,6 +26,9 @@ export class HeroiService {
           .set('pageSize', size.toString())
           .set('sortParam', sortParam.toString())
           .set('sortType', sortType.toString())
+          .set('nomeFilter', "")
+          .set('classeFilter', "")
+          .set('movFilter', "")
 
       return this.http.get<HeroiModel>(this.heroiUrl, httpOptions);
   

@@ -1,28 +1,37 @@
-<table mat-table class="herois-table mat-elevation-z8" [dataSource] = "heroiDatasource"
+<h2 class="mat-display-2 pageTitle">Lista de Heróis</h2>
+
+<div class="search-form">
+    <mat-form-field>
+            <input matInput (keyup)="findByNomeOrPlatform($event.target.value)"
+                placeholder="Digite o nome do herói...">
+    </mat-form-field>
+</div>
+
+<table mat-table class="herois-table mat-elevation-z2" [dataSource] = "heroiDatasource"
     matSort matSortActive="nome" matSortDirection="asc" matSortDisableClear>
 
     <!-- Coluna Nome -->
     <ng-container matColumnDef="nome">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
-        <td mat-cell *matCellDef="let heroi">{{heroi.nome}}</td>
+        <td class="nome" mat-cell *matCellDef="let heroi">{{heroi.nome}}</td>
     </ng-container>
 
     <!-- Coluna Alcunha -->
     <ng-container matColumnDef="alcunha">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Alcunha </th>
-        <td mat-cell *matCellDef="let heroi">{{heroi.alcunha}}</td>
+        <td class="alcunha" mat-cell *matCellDef="let heroi">{{heroi.alcunha}}</td>
     </ng-container>
 
     <!-- Coluna Classe -->
     <ng-container matColumnDef="classe">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Classe </th>
-        <td mat-cell *matCellDef="let heroi">{{heroi.classe}}</td>
+        <td class="classe" mat-cell *matCellDef="let heroi">{{heroi.classe}}</td>
     </ng-container>
 
     <!-- Coluna Movimentação -->
     <ng-container matColumnDef="movimentacao">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Movimentação </th>
-        <td mat-cell *matCellDef="let heroi">{{heroi.movimentacao}}</td>
+        <td class="movimentacao" mat-cell *matCellDef="let heroi">{{heroi.movimentacao}}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="columnsOrder"></tr>
@@ -31,5 +40,5 @@
         (click)="onHeroClick(row)"></tr>
 </table>
 
-<mat-paginator [length]="heroiDatasource.total$ | async" [pageSize]="10"
-               [pageSizeOptions]="[5, 7, 10, 15]"></mat-paginator>
+<mat-paginator class="mat-elevation-z2" [length]="heroiDatasource.total$ | async" [pageSize]="10"
+               [pageSizeOptions]="[5, 7, 10]"></mat-paginator>

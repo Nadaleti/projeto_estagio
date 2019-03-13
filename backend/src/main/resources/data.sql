@@ -100,7 +100,7 @@ insert into heroi values
 (null, 'Angel of Death', '26', 'Colorless', '25', '41', 'https://fireemblem.gamepress.gg/sites/fireemblem/files/2017-12/Atk.png', 'Infantry', 'Jaffar', '25', '33'),
 (null, 'Anima Child', '35', 'Green Mage', '17', '37', 'https://fireemblem.gamepress.gg/sites/fireemblem/files/2019-03/Luth-Atk.png', 'Infantry', 'Lugh', '31', '36'),
 (null, 'Young Lion', '30', 'Sword', '25', '44', 'https://fireemblem.gamepress.gg/sites/fireemblem/files/2017-01/Roy.png', 'Infantry', 'Roy', '28', '31'),
-(null, 'Brave Lion', '32', 'Sowrd', '26', '38', 'https://fireemblem.gamepress.gg/sites/fireemblem/files/2017-08/roy-cyl-norm.png', 'Cavalry', 'Brave Roy', '26', '34'),
+(null, 'Brave Lion', '32', 'Sword', '26', '38', 'https://fireemblem.gamepress.gg/sites/fireemblem/files/2017-08/roy-cyl-norm.png', 'Cavalry', 'Brave Roy', '26', '34'),
 (null, 'Youthful Gifts', '35', 'Colorless Bow', '27', '34', 'https://fireemblem.gamepress.gg/sites/fireemblem/files/2018-02/I68aa5l.png', 'Cavalry', 'Roy', '30', '19'),
 (null, 'Blazing Lion', '34', 'Sword', '32', '39', 'https://fireemblem.gamepress.gg/sites/fireemblem/files/2019-02/1%20-%20NxR0Gb9.png', 'Infantry', 'Legendary Roy', '26', '38'),
 (null, 'Spooky Monster', '38', 'Red Dragon', '40', '46', 'https://fireemblem.gamepress.gg/sites/fireemblem/files/2018-10/DlvdYg9.png', 'Armored', 'Halloween Myrrh', '32', '23'),

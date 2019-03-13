@@ -7,20 +7,38 @@
 //container para expandir os conteúdos
 .containerBody{
     width: 90%;
-    margin: 0 auto;
-}
-
-//conteúdos que ocupam todo espaço do container
-.contentBody{
-    width: 100%;
+    padding-top: 1%; 
     margin: 0 auto;
 }
 
 /* ---------------------------------------
-    TABELA
+    CONTORLE DE PÁGINA
+----------------------------------------*/
+
+.pageTitle {
+    margin-bottom: 15px;
+}
+
+/* ---------------------------------------
+    LISTAGEM DO BD
 ----------------------------------------*/
 
 .mat-row:hover{
-    background-color: #c7cdd6;
+    background-color: #eee;
     cursor: pointer;
+}
+
+.emptyResult {
+    font-size: 1.1em;
+    font-style: italic; 
+    color: #aaa9a9;
+    background-color: white;
+    padding: 1em;
+}
+
+.add-btn {
+    background-color: #3f51b5 !important;
+    position: absolute !important;
+    bottom: 30px !important;
+    right: 30px !important;
 }

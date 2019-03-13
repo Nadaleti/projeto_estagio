@@ -16,67 +16,70 @@ import com.opussoftware.femanager.repositories.HeroiRepository;
 public class HeroiService {
 	@Autowired
 	private HeroiRepository heroiRepository;
-	
-	//Get todos herois
-	public HeroiModel getAllHeroi(int page, int pageSize, String sortParam, String sortType){
+
+	// Get todos herois
+	public HeroiModel getAllHeroi(int page, int pageSize, String sortParam, String sortType, String nomeFilter,
+			String classeFilter, String movFilter) {
 		
+		//define o tipo de ordenação
 		Direction x = (sortType.equals("asc")) ? Direction.ASC : Direction.DESC;
 		Sort sort = new Sort(x, sortParam);
 		
-		List<Heroi> herois = heroiRepository.findAll(sort);
-		
+		//busca
+		List<Heroi> herois;
+		if(nomeFilter.equals("") && classeFilter.equals("") && movFilter.equals("")) {
+			herois = heroiRepository.findAll(sort);
+			
+		}else if(classeFilter.equals("") && movFilter.equals("")) {
+			herois = heroiRepository.findByNomeContaining("%" + nomeFilter + "%", sort);
+			
+		}else if(nomeFilter.equals("") && movFilter.equals("")) {
+			herois = heroiRepository.findByClasseContaining("%" + classeFilter + "%", sort);
+			
+		}else if(classeFilter.equals("") && nomeFilter.equals("")) {
+			herois = heroiRepository.findByMovimentacaoContaining("%" + movFilter + "%", sort);
+			
+		}else {
+			herois = heroiRepository.findAll(sort);
+		}
+
 		int total = herois.size();
 		int from = page * pageSize;
-		int to = ( from + pageSize > total) ? total : from + pageSize;
-		
+		int to = (from + pageSize > total) ? total : from + pageSize;
+
 		List<Heroi> heroiPage = herois.subList(from, to);
-		
+
 		return new HeroiModel(heroiPage, total);
 	}
-	
+
 	// Get um heroi
 	public Optional<Heroi> getOneHeroi(Long id) {
 		return this.heroiRepository.findById(id);
 	}
 
-	// Get lista de herois por nome
-	public List<Heroi> getHeroiByName(String nome) {
-		return this.heroiRepository.findByNomeContaining(nome);
-	}
-	
-	//Get lista de herois por classe
-	public List<Heroi> getHeroiByClasse(String nome) {
-		return this.heroiRepository.findByClasseContaining(nome);
-	}
-	
-	//Get lista de herois por movimento
-	public List<Heroi> getHeroiByMovimentacao(String nome) {
-		return this.heroiRepository.findByMovimentacaoContaining(nome);
-	}
-	
-	//criar novo heroi
+	// criar novo heroi
 	public Heroi saveHeroi(Heroi heroi) {
 		return this.heroiRepository.saveAndFlush(heroi);
 	}
-	
-	//apagar heroi
+
+	// apagar heroi
 	public boolean deleteHeroi(Long id) {
 		Optional<Heroi> deletable = this.heroiRepository.findById(id);
-		
-		if(!deletable.isPresent())
+
+		if (!deletable.isPresent())
 			return false;
-		
+
 		this.heroiRepository.deleteById(id);
 		return true;
 	}
-	
-	//atualizar um heroi
+
+	// atualizar um heroi
 	public Heroi updateHeroi(Heroi heroi, Long id) {
 		Optional<Heroi> updatable = this.heroiRepository.findById(id);
-		
-		if(!updatable.isPresent())
+
+		if (!updatable.isPresent())
 			return null;
-		
+
 		heroi.setId(id);
 		return this.heroiRepository.saveAndFlush(heroi);
 	}

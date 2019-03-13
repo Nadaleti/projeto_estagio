@@ -1,4 +1,55 @@
-mat-paginator, .herois-table {
+@import '~@angular/material/theming';
+
+$config: mat-typography-config();
+
+table, mat-paginator, mat-form-field, .herois-table {
     width: 100%;
     margin: 0 auto;
+
+    .nome {
+        width: 20%;
+    }
+
+    .alcunha {
+        width: 40%;
+    }
+
+    .classe {
+        width: 15%;
+    }
+
+    .movimentacao {
+        width: 15%;
+    }
+
+    .button-delete{
+        width: 5%;
+    }
+
+    .button-delete{
+        width: 5%;
+    }
+}
+
+.search-form {
+    width: 100%;
+
+    mat-form-field {
+        width: 100%;
+    }
+
+    .form-field:nth-child(1) {
+        width: 50%;
+        float: left;
+    }
+
+    .form-field:nth-child(2) {
+        width: 25%;
+        float: right;
+    }
+
+    .form-field:nth-child(3) {
+        width: 25%;
+        float: right;
+    }
 }

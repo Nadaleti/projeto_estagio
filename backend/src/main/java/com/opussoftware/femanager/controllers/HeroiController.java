@@ -27,33 +27,16 @@ public class HeroiController {
 		@GetMapping(path = "/herois")
 		public HeroiModel getAllHerois(@RequestParam("page") int page, 
 				@RequestParam("pageSize") int pageSize, @RequestParam("sortParam") String sortParam,
-				@RequestParam("sortType") String sortType) {
-			System.out.println(sortParam + " " + sortType);
-			return heroiService.getAllHeroi(page, pageSize, sortParam, sortType);
+				@RequestParam("sortType") String sortType, String nomeFilter,
+				String classeFilter, String movFilter) {
+			System.out.println("aa" + nomeFilter + " " + classeFilter + "" + movFilter);
+			return heroiService.getAllHeroi(page, pageSize, sortParam, sortType, nomeFilter, classeFilter, movFilter);
 		}
 
 		// Get um heroi
 		@GetMapping(path = "/herois/{id}")
 		public ResponseEntity<Heroi> getOneHeroi(@PathVariable Long id) {
 			return ResponseEntity.of(this.heroiService.getOneHeroi(id));
-		}
-
-		// Get lista de herois por nome
-		@GetMapping(path = "/herois/searchbyName")
-		public List<Heroi> getHeroiByName(@RequestParam("nome") String nome) {
-			return this.heroiService.getHeroiByName(nome);
-		}
-		
-		// Get lista de herois por nome
-		@GetMapping(path = "/herois/searchByClasse")
-		public List<Heroi> getHeroiByClasse(@RequestParam("nome") String nome) {
-			return this.heroiService.getHeroiByClasse(nome);
-		}
-		
-		// Get lista de herois por nome
-		@GetMapping(path = "/herois/searchByMov")
-		public List<Heroi> getHeroiByMovimentacao(@RequestParam("nome") String nome) {
-			return this.heroiService.getHeroiByMovimentacao(nome);
 		}
 
 		// Criar heroi
