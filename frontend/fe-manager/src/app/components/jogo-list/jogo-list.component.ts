@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { JogoDataSource } from './jogoDataSource';
 import { JogoService } from 'src/app/services/jogo.service';
-import { MatPaginator, MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
-import { tap, distinctUntilChanged, debounce, debounceTime, switchMap } from 'rxjs/operators';
+import { MatPaginator, MatDialog, MatDialogConfig, MatDialogRef, MatSnackBar } from '@angular/material';
+import { tap } from 'rxjs/operators';
 import { JogoModalComponent } from '../jogo-modal/jogo-modal.component';
 import { Jogo } from 'src/app/models/jogo';
+import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
 
 @Component({
     selector: 'app-jogo-list',
@@ -14,7 +15,7 @@ import { Jogo } from 'src/app/models/jogo';
 
 export class JogoListComponent implements OnInit {
     jogoDataSource: JogoDataSource;
-    columnsOrder = ['nome', 'plat', 'ano', 'button'];
+    columnsOrder = ['nome', 'plat', 'ano', 'edit', 'delete'];
     totalOfItems: number;
 
     private term: string = '';
@@ -42,7 +43,7 @@ export class JogoListComponent implements OnInit {
         this.jogoDataSource.loadJogos(0, 5, this.term);
     }
 
-    openDialog(jogo: Jogo, title: string): MatDialogRef<JogoModalComponent> {
+    openEditDialog(jogo: Jogo, title: string): MatDialogRef<JogoModalComponent> {
         const dialogConfig = new MatDialogConfig();
         dialogConfig.width = '600px';
         dialogConfig.data = {
@@ -54,7 +55,7 @@ export class JogoListComponent implements OnInit {
     }
 
     edit(jogo: Jogo) {
-        let dialogRef = this.openDialog(jogo, 'Editar');
+        let dialogRef = this.openEditDialog(jogo, 'Editar');
 
         dialogRef.afterClosed().subscribe(
             data => {
@@ -66,12 +67,36 @@ export class JogoListComponent implements OnInit {
     }
 
     create() {
-        let dialogRef = this.openDialog(null, 'Novo Jogo');
+        let dialogRef = this.openEditDialog(null, 'Novo Jogo');
 
         dialogRef.afterClosed().subscribe(
             data => {
                 if (data) {
                     this.jogoDataSource.createJogo(data);
+                }
+            }
+        );
+    }
+
+    delete(jogo: Jogo) {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.width = '500px';
+        dialogConfig.data = {
+            modalType: 'jogo',
+            id: jogo.id,
+            modalContent: jogo.nome
+        }
+
+        let dialogRef = this.dialog.open(DeleteModalComponent, dialogConfig);
+
+        dialogRef.afterClosed().subscribe(
+            data => {
+                if (data) {
+                    if (this.paginator.length % this.paginator.pageSize === 1 && !this.paginator.hasNextPage()) {
+                        this.paginator.previousPage();
+                        this.jogoDataSource.deleteJogo(data, -1, this.paginator.pageSize, this.term);
+                    } else
+                        this.jogoDataSource.deleteJogo(data, this.paginator.pageIndex, this.paginator.pageSize, this.term);
                 }
             }
         );

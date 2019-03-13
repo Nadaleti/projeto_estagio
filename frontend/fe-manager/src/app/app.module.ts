@@ -13,13 +13,15 @@ import { JogoListComponent } from './components/jogo-list/jogo-list.component';
 import { HeroiListComponent } from './components/heroi-list/heroi-list.component';
 import { AppComponent } from './app.component';
 import { JogoModalComponent } from './components/jogo-modal/jogo-modal.component';
+import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     JogoListComponent,
     HeroiListComponent,
-    JogoModalComponent
+    JogoModalComponent,
+    DeleteModalComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,7 @@ import { JogoModalComponent } from './components/jogo-modal/jogo-modal.component
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [JogoModalComponent]
+  entryComponents: [JogoModalComponent, DeleteModalComponent]
 })
 
 export class AppModule { }

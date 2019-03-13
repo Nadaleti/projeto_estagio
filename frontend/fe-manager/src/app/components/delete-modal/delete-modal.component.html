@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Excluir {{modalType | titlecase}}</h2>
+
+<mat-dialog-content>
+    <p class="mat-body">Você deseja realmente excluir o {{modalType}}:
+        <br>
+        <strong>"{{modalContent}}"</strong> ?
+        <br><br>
+        Esta é uma ação irreversível.
+    </p>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button (click)="close()" class="mat-raised-button mat-warn">Cancelar</button>
+    <button (click)="delete()" class="mat-raised-button mat-primary">Confirmar</button>
+</mat-dialog-actions>
