@@ -26,7 +26,7 @@ export class HeroiDatasource extends DataSource<Heroi> {
         this.heroiService.getHerois(page, size, sortParam, sortType)
             .pipe(
                 tap(heroiModel => this.heroiSubject.next(heroiModel.herois)),
-                tap(heroiModel => this.total.next(heroiModel.total))
+                tap(heroiModel => this.total.next(heroiModel.total)),
             )
             .subscribe();
     }

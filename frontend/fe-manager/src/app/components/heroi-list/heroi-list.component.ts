@@ -29,11 +29,12 @@ export class HeroiListComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = this.paginator.pageIndex);
-
+    
     merge(this.sort.sortChange, this.paginator.page)
         .pipe(
             tap(() => this.heroiDatasource.loadHerois(this.paginator.pageIndex, this.paginator.pageSize, 
-              this.sort.active, this.sort.direction.toString() ))
+              this.sort.active, this.sort.direction.toString() )
+              )
         )
         .subscribe();
   }
