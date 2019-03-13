@@ -4,13 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.opussoftware.femanager.entities.Heroi;
+import com.opussoftware.femanager.models.HeroiModel;
 import com.opussoftware.femanager.repositories.HeroiRepository;
 
 @Service
@@ -19,11 +18,20 @@ public class HeroiService {
 	private HeroiRepository heroiRepository;
 	
 	//Get todos herois
-	public List<Heroi> getAllHeroi(){
-		Pageable page = PageRequest.of(0, 5, Sort.Direction.ASC,"nome");
-		Page<Heroi> herois = this.heroiRepository.findAll(page); 
+	public HeroiModel getAllHeroi(int page, int pageSize, String sortParam, String sortType){
 		
-		return herois.getContent();
+		Direction x = (sortType.equals("asc")) ? Direction.ASC : Direction.DESC;
+		Sort sort = new Sort(x, sortParam);
+		
+		List<Heroi> herois = heroiRepository.findAll(sort);
+		
+		int total = herois.size();
+		int from = page * pageSize;
+		int to = ( from + pageSize > total) ? total : from + pageSize;
+		
+		List<Heroi> heroiPage = herois.subList(from, to);
+		
+		return new HeroiModel(heroiPage, total);
 	}
 	
 	// Get um heroi

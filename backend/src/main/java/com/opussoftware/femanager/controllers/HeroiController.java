@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.opussoftware.femanager.entities.Heroi;
+import com.opussoftware.femanager.models.HeroiModel;
 import com.opussoftware.femanager.services.HeroiService;
 
 @RestController
@@ -24,8 +25,11 @@ public class HeroiController {
 	
 	// Get all herois
 		@GetMapping(path = "/herois")
-		public List<Heroi> getAllHerois() {
-			return heroiService.getAllHeroi();
+		public HeroiModel getAllHerois(@RequestParam("page") int page, 
+				@RequestParam("pageSize") int pageSize, @RequestParam("sortParam") String sortParam,
+				@RequestParam("sortType") String sortType) {
+			System.out.println(sortParam + " " + sortType);
+			return heroiService.getAllHeroi(page, pageSize, sortParam, sortType);
 		}
 
 		// Get um heroi

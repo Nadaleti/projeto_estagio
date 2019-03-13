@@ -32,7 +32,7 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <ul>
-                    <li><a href="#">Opção 1</a></li>
+                    <li><a routerLink="/herois">Lista de Heróis</a></li>
                     <li><a href="#">Opção 2</a></li>
                     <li><a href="#">Opção 3</a></li>
                 </ul>
@@ -44,7 +44,7 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <ul>
-                    <li><a href="#">Opção 1</a></li>
+                    <li><a routerLink="/jogos">Lista de Jogos</a></li>
                     <li><a href="#">Opção 2</a></li>
                     <li><a href="#">Opção 3</a></li>
                 </ul>
@@ -64,7 +64,8 @@
         </mat-accordion>
     </mat-sidenav>
     <mat-sidenav-content class="content">
-        <p>Sou feliz, por isso estou aquiii!!!</p>
-        <router-outlet></router-outlet>
+        <!--<div class="containerBody">-->
+            <router-outlet></router-outlet>
+         <!--</div>-->
     </mat-sidenav-content>
 </mat-sidenav-container>
