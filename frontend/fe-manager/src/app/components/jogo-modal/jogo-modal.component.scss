@@ -1,0 +1,21 @@
+.form-content {
+    width: 100%;
+
+    mat-form-field {
+        width: 100%;
+    }
+
+    .form-field:nth-child(1) {
+        width: 60%;
+        float: left;
+    }
+
+    .form-field:nth-child(2) {
+        width: 35%;
+        float: right;
+    }
+}
+
+mat-dialog-actions {
+    float: right;
+}

@@ -1,7 +1,5 @@
 package com.opussoftware.femanager.controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,26 +24,14 @@ public class JogoController {
 
 	// Get all jogos
 	@GetMapping(path = "/jogos")
-	public JogoModel getAllJogos(@RequestParam("page") int page, @RequestParam("pageSize") int size) {
-		return jogoService.getAllJogos(page, size);
-	}
-
-	// Get um jogo
-	@GetMapping(path = "/jogos/{id}")
-	public ResponseEntity<Jogo> getOneJogo(@PathVariable Long id) {
-		return ResponseEntity.of(this.jogoService.getOneJogo(id));
-	}
-
-	// Get lista de jogos por nome
-	@GetMapping(path = "/jogos/search")
-	public List<Jogo> getJogoByName(@RequestParam("nome") String nome) {
-		return this.jogoService.getJogoByName(nome);
+	public JogoModel getAllJogos(@RequestParam("page") int page, @RequestParam("pageSize") int size, @RequestParam("filter") String filter) {
+		return jogoService.getAllJogos(page, size, filter);
 	}
 
 	// Criar jogo
 	@PostMapping(path = "/jogos")
 	public ResponseEntity<Object> saveJogo(@RequestBody Jogo jogo) {
-		if (this.jogoService.saveJogo(jogo) != null) {
+		if (this.jogoService.saveJogo(jogo) == null) {
 			return ResponseEntity.badRequest().build();
 		}
 
@@ -65,7 +51,7 @@ public class JogoController {
 	// Atualizar jogo
 	@PutMapping(path = "/jogos/{id}")
 	public ResponseEntity<Object> updateJogo(@RequestBody Jogo jogo, @PathVariable Long id) {
-		if (this.jogoService.updateJogo(jogo, id) != null) {
+		if (this.jogoService.updateJogo(jogo, id) == null) {
 			return ResponseEntity.notFound().build();
 		}
 

@@ -1,25 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { MatSidenavModule, MatExpansionModule, MatTableModule, 
   MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, 
-  MatSortModule, MatFormFieldModule,  MatIconModule, MatButtonModule,
-  MatDialogModule, MatButtonToggleModule} from '@angular/material';
-
+  MatSortModule} from '@angular/material';
 import { JogoListComponent } from './components/jogo-list/jogo-list.component';
 import { HeroiListComponent } from './components/heroi-list/heroi-list.component';
-import { AppComponent } from './app.component';
-import { JogoModalComponent } from './components/jogo-modal/jogo-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     JogoListComponent,
-    HeroiListComponent,
-    JogoModalComponent
+    HeroiListComponent
   ],
   imports: [
     BrowserModule,
@@ -32,17 +28,9 @@ import { JogoModalComponent } from './components/jogo-modal/jogo-modal.component
     MatPaginatorModule,
     MatSortModule,
     MatInputModule,
-    MatProgressSpinnerModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatButtonToggleModule,
-    ReactiveFormsModule
+    MatProgressSpinnerModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
-  entryComponents: [JogoModalComponent]
+  bootstrap: [AppComponent]
 })
-
 export class AppModule { }

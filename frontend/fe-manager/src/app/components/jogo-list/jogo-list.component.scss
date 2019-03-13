@@ -1,4 +1,42 @@
-mat-paginator, .jogos-table {
-    width: 90%;
-    margin: 0 auto;
+@import '~@angular/material/theming';
+
+$config: mat-typography-config();
+
+table, mat-paginator, mat-form-field {
+    width: 100%;
+
+    .nome {
+        width: 55%;
+    }
+
+    .plat {
+        width: 25%;
+    }
+
+    .ano {
+        width: 15%;
+    }
+
+    .button {
+        width: 5%;
+    }
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+div {
+    font-size: 1.1em;
+    font-style: italic; 
+    color: #aaa9a9;
+    background-color: white;
+    padding: 1em;
+}
+
+.add-btn {
+    background-color: #3f51b5;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
 }

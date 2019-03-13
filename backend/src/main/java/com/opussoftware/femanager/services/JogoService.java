@@ -1,12 +1,10 @@
 package com.opussoftware.femanager.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.opussoftware.femanager.entities.Jogo;
@@ -19,31 +17,20 @@ public class JogoService {
 	private JogoRepository jogoRepository;
 
 	// Get all jogos
-	public JogoModel getAllJogos(int page, int size) {
-		List<Jogo> jogos = this.jogoRepository.findAll();
+	public JogoModel getAllJogos(int page, int size, String filter) {
+		List<Jogo> jogos = filter.isEmpty() ? this.jogoRepository.findAll()
+				: this.jogoRepository.findByNomeOrPlataformaContaining("%" + filter.toLowerCase() + "%");
 		int total = jogos.size();
 		
 		int from = (page * size);
 		int to = (from + size) > total ? total : (from + size);
 		
-		List<Jogo> jogoPage = jogos.subList(from, to);
-
-		return new JogoModel(jogoPage, total);
-	}
-	
-	// Retorna o total de jogos
-	public Integer totalOfJogos() {
-		return this.jogoRepository.findAll().size();
-	}
-
-	// Get um jogo
-	public Optional<Jogo> getOneJogo(Long id) {
-		return this.jogoRepository.findById(id);
-	}
-
-	// Get lista de jogos por nome
-	public List<Jogo> getJogoByName(String nome) {
-		return this.jogoRepository.findByNomeContaining(nome);
+		if (total > 0) {
+			List<Jogo> jogoPage = jogos.subList(from, to);
+			return new JogoModel(jogoPage, total);
+		} else {
+			return new JogoModel(new ArrayList<Jogo>(), total);
+		}
 	}
 
 	// Criar jogo

@@ -22,12 +22,22 @@ export class JogoDataSource extends DataSource<Jogo> {
         this.jogoSubject.complete();
     }
 
-    loadJogos(page: number, size: number) {
-        this.jogoService.getJogos(page, size)
+    loadJogos(page: number, size: number, filter: string) {
+        this.jogoService.getJogos(page, size, filter)
             .pipe(
                 tap(jogoModel => this.jogoSubject.next(jogoModel.jogos)),
                 tap(jogoModel => this.total.next(jogoModel.total))
             )
+            .subscribe();
+    }
+
+    updateJogo(jogo: Jogo, page: number, pageSize: number, term: string) {
+        this.jogoService.updateJogo(jogo)
+            .subscribe(_ => this.loadJogos(page, pageSize, term));
+    }
+
+    createJogo(jogo: Jogo) {
+        this.jogoService.createJogo(jogo)
             .subscribe();
     }
 }
