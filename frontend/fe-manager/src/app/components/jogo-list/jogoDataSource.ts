@@ -40,4 +40,12 @@ export class JogoDataSource extends DataSource<Jogo> {
         this.jogoService.createJogo(jogo)
             .subscribe();
     }
+
+    deleteJogo(id: number, page: number, size: number, term: string) {
+        this.jogoService.deleteJogo(id)
+            .subscribe(_ => {
+                if (page >= 0)
+                    this.loadJogos(page, size, term)
+            });
+    }
 }

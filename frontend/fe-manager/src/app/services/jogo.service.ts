@@ -36,4 +36,8 @@ export class JogoService {
     createJogo(jogo: Jogo): Observable<Jogo> {
         return this.http.post<Jogo>(this.jogoUrl, jogo);
     }
+
+    deleteJogo(id: number): Observable<Jogo> {
+        return this.http.delete<Jogo>(this.jogoUrl+'/'+id);
+    }
 }
