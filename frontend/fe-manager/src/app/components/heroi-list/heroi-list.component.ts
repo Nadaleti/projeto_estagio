@@ -14,7 +14,7 @@ import { merge } from 'rxjs';
 export class HeroiListComponent implements OnInit, AfterViewInit {
   heroiDatasource: HeroiDatasource;
   //columnsOrder = ['nome', 'alc', 'hp', 'atk', 'spd', 'def', 'res', 'clas', 'mov'];
-  columnsOrder = ['nome', 'alcunha', 'classe', 'movimentacao'];
+  columnsOrder = ['nome', 'alcunha', 'classe', 'movimentacao', 'edit', 'delete'];
   totalOfItems: number;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -24,7 +24,7 @@ export class HeroiListComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.heroiDatasource = new HeroiDatasource(this.heroiService);
-    this.heroiDatasource.loadHerois(0, 10, 'nome', 'asc');
+    this.heroiDatasource.loadHerois(0, 10, 'nome', 'asc', "", "", "");
   }
 
   ngAfterViewInit() {
@@ -33,7 +33,7 @@ export class HeroiListComponent implements OnInit, AfterViewInit {
     merge(this.sort.sortChange, this.paginator.page)
         .pipe(
             tap(() => this.heroiDatasource.loadHerois(this.paginator.pageIndex, this.paginator.pageSize, 
-              this.sort.active, this.sort.direction.toString() )
+              this.sort.active, this.sort.direction.toString(), "", "", "")
               )
         )
         .subscribe();

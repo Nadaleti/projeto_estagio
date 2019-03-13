@@ -22,8 +22,9 @@ export class HeroiDatasource extends DataSource<Heroi> {
         this.heroiSubject.complete();
     }
 
-    loadHerois(page: number, size: number, sortParam: String, sortType: String) {
-        this.heroiService.getHerois(page, size, sortParam, sortType)
+    loadHerois(page: number, size: number, sortParam: String, sortType: String,
+        nomeFilter: String, classeFilter: String, movFilter: String) {
+        this.heroiService.getHerois(page, size, sortParam, sortType, nomeFilter, classeFilter, movFilter)
             .pipe(
                 tap(heroiModel => this.heroiSubject.next(heroiModel.herois)),
                 tap(heroiModel => this.total.next(heroiModel.total)),

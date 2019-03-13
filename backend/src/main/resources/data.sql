@@ -97,7 +97,7 @@ insert into heroi values
 (null, 'Chaotic Cure', '36', 'Staff', '33', '36', 'https://vignette.wikia.nocookie.net/fireemblem/images/6/6f/B13-050N_artwork.png/revision/latest?cb=20180909040602', 'Flying', 'Niamh', '26', '35'),
 (null, 'Chaotic Brightness', '36', 'Axe', '30', '38', 'https://vignette.wikia.nocookie.net/fireemblem/images/8/81/B15-075N_artwork.png/revision/latest?cb=20181231013807', 'Flying', 'Niamh', '33', '36'),
 (null, 'Pious Mage', '33', 'Green Mage', '19', '33', 'https://fireemblem.gamepress.gg/sites/fireemblem/files/2017-02/Full_Portrait_Nino.png', 'Infantry', 'Nino', '16', '36'),
-(null, 'Angel of Death', '26', 'Colorless', '25', '41', 'https://fireemblem.gamepress.gg/sites/fireemblem/files/2017-12/Atk.png', 'Infantry', 'Jaffar', '25', '33'),
+(null, 'Angel of Death', '26', 'Colorless Dagger', '25', '41', 'https://fireemblem.gamepress.gg/sites/fireemblem/files/2017-12/Atk.png', 'Infantry', 'Jaffar', '25', '33'),
 (null, 'Anima Child', '35', 'Green Mage', '17', '37', 'https://fireemblem.gamepress.gg/sites/fireemblem/files/2019-03/Luth-Atk.png', 'Infantry', 'Lugh', '31', '36'),
 (null, 'Young Lion', '30', 'Sword', '25', '44', 'https://fireemblem.gamepress.gg/sites/fireemblem/files/2017-01/Roy.png', 'Infantry', 'Roy', '28', '31'),
 (null, 'Brave Lion', '32', 'Sword', '26', '38', 'https://fireemblem.gamepress.gg/sites/fireemblem/files/2017-08/roy-cyl-norm.png', 'Cavalry', 'Brave Roy', '26', '34'),

@@ -34,6 +34,26 @@
         <td class="movimentacao" mat-cell *matCellDef="let heroi">{{heroi.movimentacao}}</td>
     </ng-container>
 
+    <!-- Botão de edição -->
+    <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td class="button" mat-cell *matCellDef="let heroi">
+            <button mat-icon-button >
+                <mat-icon>create</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <!-- Botão de excluir -->
+    <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td class="button" mat-cell *matCellDef="let heroi">
+            <button mat-icon-button >
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="columnsOrder"></tr>
     <tr mat-row
         *matRowDef="let row; columns: columnsOrder"
