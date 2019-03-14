@@ -16,7 +16,6 @@ import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
 export class JogoListComponent implements OnInit {
     jogoDataSource: JogoDataSource;
     columnsOrder = ['nome', 'plat', 'ano', 'edit', 'delete'];
-    totalOfItems: number;
 
     private term: string = '';
 

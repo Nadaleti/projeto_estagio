@@ -9,7 +9,7 @@ import { MatSidenavModule, MatExpansionModule, MatTableModule,
   MatSortModule, MatFormFieldModule,  MatIconModule, MatButtonModule,
   MatDialogModule, MatButtonToggleModule, MatSelectModule, 
   MatGridListModule, MatCardModule, MatTabsModule, MatDividerModule ,
-  MatListModule} from '@angular/material';
+  MatListModule, MatRadioModule, MatAutocompleteModule} from '@angular/material';
 
 import { JogoListComponent } from './components/jogo-list/jogo-list.component';
 import { HeroiListComponent } from './components/heroi-list/heroi-list.component';
@@ -17,6 +17,9 @@ import { AppComponent } from './app.component';
 import { JogoModalComponent } from './components/jogo-modal/jogo-modal.component';
 import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
 import { ViewModalHeroiComponent } from './components/view-modal-heroi/view-modal-heroi.component';
+import { JogadorListComponent } from './components/jogador-list/jogador-list.component';
+import { JogadorModalComponent } from './components/jogador-modal/jogador-modal.component';
+import { SummonComponent } from './components/summon/summon.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { ViewModalHeroiComponent } from './components/view-modal-heroi/view-moda
     HeroiListComponent,
     JogoModalComponent,
     DeleteModalComponent,
-    ViewModalHeroiComponent
+    ViewModalHeroiComponent,
+    JogadorListComponent,
+    JogadorModalComponent,
+    SummonComponent
   ],
   imports: [
     BrowserModule,
@@ -50,11 +56,13 @@ import { ViewModalHeroiComponent } from './components/view-modal-heroi/view-moda
     MatGridListModule,
     MatCardModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    MatAutocompleteModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [JogoModalComponent, DeleteModalComponent, ViewModalHeroiComponent]
+  entryComponents: [JogoModalComponent, JogadorModalComponent, ViewModalHeroiComponent, DeleteModalComponent]
 })
 
 export class AppModule { }
