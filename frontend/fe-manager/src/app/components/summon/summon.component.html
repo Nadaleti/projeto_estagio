@@ -1,4 +1,4 @@
-<mat-form-field>
+<mat-form-field *ngIf="!nome">
     <input type="text" matInput [formControl]="jogadorSearch" [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let jogador of jogadoresFiltrados | async" [value]="jogador.nome">

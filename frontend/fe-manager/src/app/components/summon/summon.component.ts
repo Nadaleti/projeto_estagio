@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SummonService } from 'src/app/services/summon.service';
 import { Jogador } from 'src/app/models/jogador';
 import { FormControl } from '@angular/forms';
@@ -15,6 +15,7 @@ export class SummonComponent implements OnInit {
     jogadores: Jogador[];
     jogadoresFiltrados: Observable<Jogador[]>;
     jogadorSearch: FormControl = new FormControl('');
+    @Input() nome: string;
 
     constructor(private summonService: SummonService) { }
 
@@ -30,9 +31,15 @@ export class SummonComponent implements OnInit {
     }
 
     getHeroiJogador() {
-        this.summonService.getHeroiJogador(
-            this.jogadores.find(jogador => jogador.nome === this.jogadorSearch.value))
-            .subscribe(data => console.log(data));
+
+        if (!this.nome)
+            this.summonService.getHeroiJogador(
+                this.jogadores.find(jogador => jogador.nome === this.jogadorSearch.value))
+                    .subscribe(data => console.log(data));
+        else
+            this.summonService.getHeroiJogador(
+                this.jogadores.find(jogador => jogador.nome === this.nome))
+                    .subscribe(data => console.log(data));
     }
 
     filterByName(value: string): Jogador[] {

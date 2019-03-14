@@ -17,6 +17,7 @@ import { DeleteModalComponent } from './components/delete-modal/delete-modal.com
 import { JogadorListComponent } from './components/jogador-list/jogador-list.component';
 import { JogadorModalComponent } from './components/jogador-modal/jogador-modal.component';
 import { SummonComponent } from './components/summon/summon.component';
+import { JogadorComponent } from './components/jogador/jogador.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SummonComponent } from './components/summon/summon.component';
     DeleteModalComponent,
     JogadorListComponent,
     JogadorModalComponent,
-    SummonComponent
+    SummonComponent,
+    JogadorComponent
   ],
   imports: [
     BrowserModule,
