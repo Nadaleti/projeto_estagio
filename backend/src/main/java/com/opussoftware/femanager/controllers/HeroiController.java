@@ -1,7 +1,5 @@
 package com.opussoftware.femanager.controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,50 +20,49 @@ import com.opussoftware.femanager.services.HeroiService;
 public class HeroiController {
 	@Autowired
 	private HeroiService heroiService;
-	
+
 	// Get all herois
-		@GetMapping(path = "/herois")
-		public HeroiModel getAllHerois(@RequestParam("page") int page, 
-				@RequestParam("pageSize") int pageSize, @RequestParam("sortParam") String sortParam,
-				@RequestParam("sortType") String sortType, String nomeFilter,
-				String classeFilter, String movFilter) {
-			System.out.println("aa" + nomeFilter + " " + classeFilter + "" + movFilter);
-			return heroiService.getAllHeroi(page, pageSize, sortParam, sortType, nomeFilter, classeFilter, movFilter);
+	@GetMapping(path = "/herois")
+	public HeroiModel getAllHerois(@RequestParam("page") int page, @RequestParam("pageSize") int pageSize,
+			@RequestParam("sortParam") String sortParam, @RequestParam("sortType") String sortType, String nomeFilter,
+			String classeFilter, String movFilter) {
+		System.out.println("aa" + nomeFilter + " " + classeFilter + "" + movFilter);
+		return heroiService.getAllHeroi(page, pageSize, sortParam, sortType, nomeFilter, classeFilter, movFilter);
+	}
+
+	// Get um heroi
+	@GetMapping(path = "/herois/{id}")
+	public ResponseEntity<Heroi> getOneHeroi(@PathVariable Long id) {
+		return ResponseEntity.of(this.heroiService.getOneHeroi(id));
+	}
+
+	// Criar heroi
+	@PostMapping(path = "/herois")
+	public ResponseEntity<Object> saveHeroi(@RequestBody Heroi heroi) {
+		if (this.heroiService.saveHeroi(heroi) != null) {
+			return ResponseEntity.badRequest().build();
 		}
 
-		// Get um heroi
-		@GetMapping(path = "/herois/{id}")
-		public ResponseEntity<Heroi> getOneHeroi(@PathVariable Long id) {
-			return ResponseEntity.of(this.heroiService.getOneHeroi(id));
+		return ResponseEntity.status(HttpStatus.CREATED).build();
+	}
+
+	// Delete heroi
+	@DeleteMapping(path = "/herois/{id}")
+	public ResponseEntity<Object> deleteHeroi(@PathVariable Long id) {
+		if (!this.heroiService.deleteHeroi(id)) {
+			return ResponseEntity.notFound().build();
 		}
 
-		// Criar heroi
-		@PostMapping(path = "/herois")
-		public ResponseEntity<Object> saveHeroi(@RequestBody Heroi heroi) {
-			if (this.heroiService.saveHeroi(heroi) != null) {
-				return ResponseEntity.badRequest().build();
-			}
+		return ResponseEntity.ok().build();
+	}
 
-			return ResponseEntity.status(HttpStatus.CREATED).build();
+	// Atualizar heroi
+	@PutMapping(path = "/herois/{id}")
+	public ResponseEntity<Object> updateHeroi(@RequestBody Heroi heroi, @PathVariable Long id) {
+		if (this.heroiService.updateHeroi(heroi, id) != null) {
+			return ResponseEntity.notFound().build();
 		}
 
-		// Delete heroi
-		@DeleteMapping(path = "/herois/{id}")
-		public ResponseEntity<Object> deleteHeroi(@PathVariable Long id) {
-			if (!this.heroiService.deleteHeroi(id)) {
-				return ResponseEntity.notFound().build();
-			}
-
-			return ResponseEntity.ok().build();
-		}
-
-		// Atualizar heroi
-		@PutMapping(path = "/herois/{id}")
-		public ResponseEntity<Object> updateHeroi(@RequestBody Heroi heroi, @PathVariable Long id) {
-			if (this.heroiService.updateHeroi(heroi, id) != null) {
-				return ResponseEntity.notFound().build();
-			}
-
-			return ResponseEntity.ok().build();
-		}
+		return ResponseEntity.ok().build();
+	}
 }

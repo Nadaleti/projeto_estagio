@@ -12,6 +12,8 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Jogador {
 
@@ -32,6 +34,7 @@ public class Jogador {
 	@Min(0)
 	private int num_herois;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "jogador")
 	private List<Heroi_jogador> herois;
 

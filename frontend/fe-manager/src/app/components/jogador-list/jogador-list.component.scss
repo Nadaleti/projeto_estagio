@@ -1,0 +1,19 @@
+table, mat-paginator, mat-form-field, .jogos-table {
+    width: 100%;
+
+    .nome {
+        width: 30%;
+    }
+
+    .sexo {
+        width: 20%;
+    }
+
+    .numHerois, .maxHerois {
+        width: 10%;
+    }
+
+    .button {
+        width: 5%;
+    }
+}
