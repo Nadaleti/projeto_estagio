@@ -51,6 +51,10 @@ public class HeroiService {
 
 		return new HeroiModel(heroiPage, total);
 	}
+	
+	public List<Heroi> getAllHeroi() {
+		return this.heroiRepository.findAll();
+	}
 
 	// Get um heroi
 	public Optional<Heroi> getOneHeroi(Long id) {

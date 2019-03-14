@@ -6,7 +6,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.opussoftware.femanager.entities.Jogo;
 import com.opussoftware.femanager.entities.Jogador;
 import com.opussoftware.femanager.models.JogadorModel;
@@ -19,6 +18,10 @@ public class JogadorService {
 	@Autowired
 	private JogadorRepository jogadorRepository;
 
+	public List<Jogador> getAllJogadores() {
+		return this.jogadorRepository.findAll();
+	}
+	
 	public JogadorModel getAllJogadores(int page, int size, String filter) {
 		List<Jogador> jogadores = filter.isEmpty() ? this.jogadorRepository.findAll()
 				: this.jogadorRepository.findByNomeContaining(filter.toLowerCase());
@@ -58,5 +61,9 @@ public class JogadorService {
 		this.jogadorRepository.deleteById(id);
 		
 		return true;
+	}
+	
+	public Optional<Jogador> findOne(Long id) {
+		return this.jogadorRepository.findById(id);
 	}
 }
