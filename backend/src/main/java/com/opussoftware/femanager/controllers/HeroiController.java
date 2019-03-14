@@ -1,6 +1,7 @@
 package com.opussoftware.femanager.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.opussoftware.femanager.entities.Heroi;
+import com.opussoftware.femanager.entities.Jogo;
 import com.opussoftware.femanager.models.HeroiModel;
 import com.opussoftware.femanager.services.HeroiService;
 
@@ -29,7 +31,6 @@ public class HeroiController {
 				@RequestParam("pageSize") int pageSize, @RequestParam("sortParam") String sortParam,
 				@RequestParam("sortType") String sortType, String nomeFilter,
 				String classeFilter, String movFilter) {
-			System.out.println("aa" + nomeFilter + " " + classeFilter + "" + movFilter);
 			return heroiService.getAllHeroi(page, pageSize, sortParam, sortType, nomeFilter, classeFilter, movFilter);
 		}
 
@@ -67,5 +68,13 @@ public class HeroiController {
 			}
 
 			return ResponseEntity.ok().build();
+		}
+		
+		//resgatar jogos de determinado herois
+		@GetMapping(path= "/herois-jogos/{id}")
+		public List<Jogo> getJogos(@PathVariable Long id){
+			Optional<Heroi> heroi = this.heroiService.getOneHeroi(id);
+			
+			return heroi.get().getJogos();
 		}
 }

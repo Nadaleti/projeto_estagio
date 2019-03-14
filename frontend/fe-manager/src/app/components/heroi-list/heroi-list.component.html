@@ -2,8 +2,52 @@
 
 <div class="search-form">
     <mat-form-field>
-            <input matInput (keyup)="findByNomeOrPlatform($event.target.value)"
-                placeholder="Digite o nome do herói...">
+        <input matInput placeholder="Digite o nome do herói..." #inputNome>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select placeholder="Classe" [(value)]="selectedClasse" #inputClasse>
+            <mat-option>--</mat-option>
+            <mat-option value = "Sword">Sword</mat-option>
+            <mat-option value = "Lance">Lance</mat-option>
+            <mat-option value = "Axe">Axe</mat-option>
+            <mat-option value = "Staff">Staff</mat-option>
+
+            <mat-option value = "Red Mage">Red Mage</mat-option>
+            <mat-option value = "Blue Mage">Blue Mage</mat-option>
+            <mat-option value = "Green Mage">Green Mage</mat-option>
+            <mat-option value = "Colorless Mage">Colorless Mage</mat-option>
+
+            <mat-option value = "Red Dragon">Red Dragon</mat-option>
+            <mat-option value = "Blue Dragon">Blue Dragon</mat-option>
+            <mat-option value = "Green Dragon">Green Dragon</mat-option>
+            <mat-option value = "Colorless Dragon">Colorless Dragon</mat-option>
+
+            <mat-option value = "Red Dagger">Red Dagger</mat-option>
+            <mat-option value = "Blue Dagger">Blue Dagger</mat-option>
+            <mat-option value = "Green Dagger">Green Dagger</mat-option>
+            <mat-option value = "Colorless Dagger">Colorless Dagger</mat-option>
+
+            <mat-option value = "Red Bow">Red Bow</mat-option>
+            <mat-option value = "Blue Bow">Blue Bow</mat-option>
+            <mat-option value = "Green Bow">Green Bow</mat-option>
+            <mat-option value = "Colorless Bow">Colorless Bow</mat-option>
+
+            <mat-option value = "Red Beast">Red Beast</mat-option>
+            <mat-option value = "Blue Beast">Blue Beast</mat-option>
+            <mat-option value = "Green Beast">Green Beast</mat-option>
+            <mat-option value = "Colorless Beast">Colorless Beast</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select placeholder="Movimentação" [(value)]="selectedMov" #inputMov>
+            <mat-option>--</mat-option>
+            <mat-option value = "Infantry">Infantry</mat-option>
+            <mat-option value = "Cavalry">Cavalry</mat-option>
+            <mat-option value = "Armored">Armored</mat-option>
+            <mat-option value = "Flying">Flying</mat-option>
+        </mat-select>
     </mat-form-field>
 </div>
 
@@ -48,7 +92,7 @@
     <ng-container matColumnDef="delete">
         <th mat-header-cell *matHeaderCellDef></th>
         <td class="button" mat-cell *matCellDef="let heroi">
-            <button mat-icon-button >
+            <button mat-icon-button (click)="delete(heroi)" >
                 <mat-icon>delete</mat-icon>
             </button>
         </td>
@@ -57,8 +101,9 @@
     <tr mat-header-row *matHeaderRowDef="columnsOrder"></tr>
     <tr mat-row
         *matRowDef="let row; columns: columnsOrder"
-        (click)="onHeroClick(row)"></tr>
+        (click)="viewHero(row)"></tr>
 </table>
 
+<div *ngIf="zeroItems()" class="mat-body mat-elevation-z2 emptyResult">Nenhum herói ou heroína encontrados...</div>
 <mat-paginator class="mat-elevation-z2" [length]="heroiDatasource.total$ | async" [pageSize]="10"
                [pageSizeOptions]="[5, 7, 10]"></mat-paginator>

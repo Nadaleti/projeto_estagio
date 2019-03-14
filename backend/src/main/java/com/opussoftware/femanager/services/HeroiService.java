@@ -20,27 +20,28 @@ public class HeroiService {
 	// Get todos herois
 	public HeroiModel getAllHeroi(int page, int pageSize, String sortParam, String sortType, String nomeFilter,
 			String classeFilter, String movFilter) {
-		
-		//define o tipo de ordenação
+
+		// define o tipo de ordenação
 		Direction x = (sortType.equals("asc")) ? Direction.ASC : Direction.DESC;
 		Sort sort = new Sort(x, sortParam);
-		
-		//busca
+
+		// busca
 		List<Heroi> herois;
-		if(nomeFilter.equals("") && classeFilter.equals("") && movFilter.equals("")) {
+		if (nomeFilter.equals("") && classeFilter.equals("") && movFilter.equals("")) {
 			herois = heroiRepository.findAll(sort);
-			
-		}else if(classeFilter.equals("") && movFilter.equals("")) {
+
+		} else if (classeFilter.equals("") && movFilter.equals("")) {
 			herois = heroiRepository.findByNomeContaining("%" + nomeFilter + "%", sort);
-			
-		}else if(nomeFilter.equals("") && movFilter.equals("")) {
+
+		} else if (nomeFilter.equals("") && movFilter.equals("")) {
 			herois = heroiRepository.findByClasseContaining("%" + classeFilter + "%", sort);
-			
-		}else if(classeFilter.equals("") && nomeFilter.equals("")) {
+
+		} else if (classeFilter.equals("") && nomeFilter.equals("")) {
 			herois = heroiRepository.findByMovimentacaoContaining("%" + movFilter + "%", sort);
-			
-		}else {
-			herois = heroiRepository.findAll(sort);
+
+		} else {
+			herois = heroiRepository.findByNomeAndClasseAndMovimentacao("%" + nomeFilter + "%",
+					"%" + classeFilter + "%", "%" + movFilter + "%", sort);
 		}
 
 		int total = herois.size();

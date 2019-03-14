@@ -1,0 +1,86 @@
+/* ---------------------------------------
+    CONTROLE DE MODAL
+----------------------------------------*/
+
+.title {
+    display: flex;
+    flex-direction: row;
+}
+
+button{
+    color: crimson;
+}
+
+.mat-dialog-title{
+    margin: 0;
+    width: 100%;
+}
+
+mat-dialog-content{
+    margin: 0;
+}
+
+/* ---------------------------------------
+    CONTROLE DE TAB
+----------------------------------------*/
+
+mat-tab-group{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+mat-tab{
+    height:100%;
+}
+
+/* ---------------------------------------
+    CONTEÚDO DE TAB
+----------------------------------------*/
+
+.imagem{
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    margin-right: 5%;
+    float:left;
+
+    img{
+        max-height: 370px;
+        float: right;
+
+    }
+}
+
+.status{
+    margin: 0;
+    padding: 0;
+    padding-top: 10px;
+    width: 45%;
+    float: right;
+}
+
+
+mat-divider{
+    width: 100%;
+}
+
+.status{
+    h2{
+        margin: 0;
+    }
+    h3{
+        margin:0;
+        margin-bottom: 0.3em;
+    }
+    p {
+        span:nth-child(1) {
+            font-weight: 600;
+        }
+        margin: 0.7em;
+    }
+}
+
+mat-list{
+    width: 100%;
+    padding: 0 !important;
+}

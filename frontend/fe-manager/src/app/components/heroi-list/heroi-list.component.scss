@@ -22,7 +22,7 @@ table, mat-paginator, mat-form-field, .herois-table {
         width: 15%;
     }
 
-    .button-delete{
+    .button-edit{
         width: 5%;
     }
 
@@ -33,23 +33,22 @@ table, mat-paginator, mat-form-field, .herois-table {
 
 .search-form {
     width: 100%;
+    display: flex;
+    justify-content: space-between;
 
-    mat-form-field {
-        width: 100%;
+    mat-form-field{
+        margin: 0 !important;
     }
 
-    .form-field:nth-child(1) {
+    mat-form-field:nth-child(1) {
         width: 50%;
-        float: left;
     }
 
-    .form-field:nth-child(2) {
-        width: 25%;
-        float: right;
+    mat-form-field:nth-child(2) {
+        width: 20%;
     }
 
-    .form-field:nth-child(3) {
-        width: 25%;
-        float: right;
+    mat-form-field:nth-child(3) {
+        width: 20%;
     }
 }

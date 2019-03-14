@@ -13,6 +13,8 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Heroi {
 
@@ -54,6 +56,7 @@ public class Heroi {
 
 	private String img;
 
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "heroi_jogo", joinColumns = { @JoinColumn(name = "heroi_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "jogo_id") })

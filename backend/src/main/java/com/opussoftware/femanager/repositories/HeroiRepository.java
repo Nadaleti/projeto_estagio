@@ -10,8 +10,8 @@ import com.opussoftware.femanager.entities.Heroi;
 
 public interface HeroiRepository extends JpaRepository<Heroi, Long> {
 
-	@Query("SELECT h FROM Heroi h WHERE lower(h.nome) like :nome" + " and lower(h.classe) like :classe"
-			+ " and lower(h.movimentacao) like :movimentacao")
+	@Query("SELECT h FROM Heroi h WHERE lower(h.nome) like :nome" + " AND lower(h.classe) like :classe"
+			+ " AND lower(h.movimentacao) like :movimentacao")
 	public List<Heroi> findByNomeAndClasseAndMovimentacao(String nome, String classe, String movimentacao,Sort sort);
 
 	public List<Heroi> findByNomeContaining(String nome, Sort sort);

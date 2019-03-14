@@ -1,0 +1,57 @@
+<div class="title">
+  <h2 mat-dialog-title>Sobre {{heroi.nome}} - {{heroi.alcunha}} </h2>
+  <button mat-button mat-dialog-close><mat-icon>close</mat-icon></button> 
+</div>
+
+<mat-dialog-content>
+
+  <mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Dados">
+
+      <div class="imagem">
+          <img class="mat-elevation-z2" src="{{heroi.img}}">
+      </div>
+
+      <div class="status">
+        <h2>{{heroi.nome}}</h2> 
+        <h3>{{heroi.alcunha}}</h3>
+
+        <mat-list>
+          <mat-divider></mat-divider>
+        </mat-list>
+
+
+        <p><span>Classe: </span> <span>{{heroi.classe}}</span> </p>
+        <p><span>Movimentação: </span> <span>{{heroi.movimentacao}}</span></p>
+
+        <p *ngIf="raridade"><span>Raridade: </span> <span>{{raridade}}</span></p> 
+        <p *ngIf="nivel"><span>Nível: </span> <span>{{nivel}}</span></p> 
+
+        <mat-list>
+          <mat-divider></mat-divider>
+        </mat-list>
+      
+        <p><span>HP: </span> <span>{{heroi.hp}}</span></p>
+        <p><span>ATK: </span> <span>{{heroi.atk}}</span></p>
+        <p><span>SPD: </span> <span>{{heroi.spd}}</span></p> 
+        <p><span>DEF: </span> <span>{{heroi.def}}</span></p> 
+        <p><span>RES: </span> <span>{{heroi.res}}</span></p>
+      </div>  
+
+
+    </mat-tab>
+
+    <mat-tab label="Jogos">
+      <mat-list>
+        <mat-list-item *ngFor="let jogo of jogos">
+          {{jogo.ano_lancamento}} - {{jogo.nome}}
+          <mat-divider></mat-divider>
+        </mat-list-item>
+        <mat-list-item *ngIf="jogos.length == 0">
+          Não foram encontrados jogos para {{heroi.nome}}
+        </mat-list-item>
+      </mat-list>
+    </mat-tab>
+  </mat-tab-group>
+
+</mat-dialog-content>

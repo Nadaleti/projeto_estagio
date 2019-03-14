@@ -1,9 +1,12 @@
-import { Component, OnInit, ViewChild, AfterViewChecked, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewChecked, AfterViewInit, Input, ElementRef } from '@angular/core';
 import { HeroiDatasource } from './heroiDataSource';
 import { HeroiService } from 'src/app/services/heroi.service';
-import { MatPaginator, MatSort } from '@angular/material';
+import { MatPaginator, MatSort, MatSelect, MatDialogRef, MatDialogConfig, MatDialog } from '@angular/material';
 import { tap } from 'rxjs/operators';
-import { merge } from 'rxjs';
+import { merge, fromEvent, from } from 'rxjs';
+import { Heroi } from 'src/app/models/heroi';
+import { ViewModalHeroiComponent } from '../view-modal-heroi/view-modal-heroi.component';
+import { Jogo } from 'src/app/models/jogo';
 
 @Component({
   selector: 'app-heroi-list',
@@ -16,11 +19,15 @@ export class HeroiListComponent implements OnInit, AfterViewInit {
   //columnsOrder = ['nome', 'alc', 'hp', 'atk', 'spd', 'def', 'res', 'clas', 'mov'];
   columnsOrder = ['nome', 'alcunha', 'classe', 'movimentacao', 'edit', 'delete'];
   totalOfItems: number;
+  dialogRef: MatDialogRef<ViewModalHeroiComponent>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild('inputNome') inputNome: ElementRef;
+  @ViewChild('inputClasse') inputClasse: MatSelect;
+  @ViewChild('inputMov') inputMov: MatSelect;
 
-  constructor(private heroiService: HeroiService) { }
+  constructor(private heroiService: HeroiService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.heroiDatasource = new HeroiDatasource(this.heroiService);
@@ -28,18 +35,56 @@ export class HeroiListComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = this.paginator.pageIndex);
+    merge(fromEvent(this.inputNome.nativeElement, 'keyup'), this.inputClasse.selectionChange, this.inputMov.selectionChange)
+      .pipe(
+        tap( () => {
+          this.paginator.pageIndex = 0;
+          this.heroiDatasource.loadHerois(this.paginator.pageIndex, this.paginator.pageSize, 
+            this.sort.active, this.sort.direction.toString(), this.inputNome.nativeElement.value, 
+            (!this.inputClasse.value) ? "" : this.inputClasse.value, 
+            (!this.inputMov.value) ? "" : this.inputMov.value);
+        })
+      )
+      .subscribe();
+
+    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
     
     merge(this.sort.sortChange, this.paginator.page)
         .pipe(
             tap(() => this.heroiDatasource.loadHerois(this.paginator.pageIndex, this.paginator.pageSize, 
-              this.sort.active, this.sort.direction.toString(), "", "", "")
+              this.sort.active, this.sort.direction.toString(), this.inputNome.nativeElement.value, 
+              (!this.inputClasse.value) ? "" : this.inputClasse.value, 
+              (!this.inputMov.value) ? "" : this.inputMov.value )
               )
         )
         .subscribe();
   }
 
-  onHeroClick(row){
-    console.log('Cliquei em: Id:', row.id, '. Heroi: ', row.nome, ' - ', row.alcunha);
+  zeroItems(): boolean {
+    let isZero: boolean;
+    this.heroiDatasource.total$.subscribe(total => { isZero = total === 0 });
+    return isZero;
+  }
+
+  openHeroDialog(heroi : Heroi, jogos: Jogo[]): MatDialogRef<ViewModalHeroiComponent>{
+    const config = new MatDialogConfig();
+    config.height = '510px';
+    config.width = '700px';
+    config.data = {
+      heroi: heroi,
+      jogos: jogos
+    };
+
+    return this.dialog.open(ViewModalHeroiComponent, config);
+  }
+
+  viewHero(row : Heroi){
+    this.heroiService.getJogos(row.id).subscribe ( jogos => {
+      this.dialogRef = this.openHeroDialog(row, jogos);
+    })
+  }
+
+  delete(heroi){
+    console.log(heroi.id)
   }
 }

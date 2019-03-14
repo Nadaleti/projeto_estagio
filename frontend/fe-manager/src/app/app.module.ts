@@ -7,13 +7,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { MatSidenavModule, MatExpansionModule, MatTableModule, 
   MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, 
   MatSortModule, MatFormFieldModule,  MatIconModule, MatButtonModule,
-  MatDialogModule, MatButtonToggleModule} from '@angular/material';
+  MatDialogModule, MatButtonToggleModule, MatSelectModule, 
+  MatGridListModule, MatCardModule, MatTabsModule, MatDividerModule ,
+  MatListModule} from '@angular/material';
 
 import { JogoListComponent } from './components/jogo-list/jogo-list.component';
 import { HeroiListComponent } from './components/heroi-list/heroi-list.component';
 import { AppComponent } from './app.component';
 import { JogoModalComponent } from './components/jogo-modal/jogo-modal.component';
 import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
+import { ViewModalHeroiComponent } from './components/view-modal-heroi/view-modal-heroi.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,8 @@ import { DeleteModalComponent } from './components/delete-modal/delete-modal.com
     JogoListComponent,
     HeroiListComponent,
     JogoModalComponent,
-    DeleteModalComponent
+    DeleteModalComponent,
+    ViewModalHeroiComponent
   ],
   imports: [
     BrowserModule,
@@ -40,11 +44,17 @@ import { DeleteModalComponent } from './components/delete-modal/delete-modal.com
     MatButtonModule,
     MatDialogModule,
     MatButtonToggleModule,
-    ReactiveFormsModule
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatTabsModule,
+    MatGridListModule,
+    MatCardModule,
+    MatDividerModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [JogoModalComponent, DeleteModalComponent]
+  entryComponents: [JogoModalComponent, DeleteModalComponent, ViewModalHeroiComponent]
 })
 
 export class AppModule { }
