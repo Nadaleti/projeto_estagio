@@ -36,6 +36,7 @@ export class SummonComponent implements OnInit {
     }
 
     filterByName(value: string): Jogador[] {
-        return this.jogadores.filter(jogador => jogador.nome.toLowerCase().includes(value.toLowerCase()));
+        return this.jogadores
+            .filter(jogador => jogador.nome.toLowerCase().includes(value.toLowerCase()));
     }
 }
