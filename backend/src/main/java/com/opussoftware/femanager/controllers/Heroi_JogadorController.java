@@ -28,4 +28,6 @@ public class Heroi_JogadorController {
 	public List<Jogador> getAllJogadores() {
 		return this.heroi_JogadorService.getAllJogadores();
 	}
+	
+	
 }

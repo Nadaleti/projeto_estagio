@@ -1,5 +1,6 @@
 package com.opussoftware.femanager.services;
 
+import java.security.cert.PKIXRevocationChecker.Option;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.opussoftware.femanager.entities.Heroi;
 import com.opussoftware.femanager.entities.Heroi_jogador;
 import com.opussoftware.femanager.entities.Jogador;
+import com.opussoftware.femanager.models.JogadorHeroiModel;
 import com.opussoftware.femanager.repositories.Heroi_JogadorRepository;
 
 @Service
@@ -61,5 +63,17 @@ public class Heroi_JogadorService {
 
 	public List<Jogador> getAllJogadores() {
 		return this.jogadorService.getAllJogadores();
+	}
+	
+	public JogadorHeroiModel getAllHeroisOfJogador(Long jogador_id) {
+		Optional<Jogador> jogador = this.jogadorService.findOne(jogador_id);
+		
+		if (!jogador.isPresent()) {
+			return null;
+		}
+		
+		List<Heroi_jogador> herois = jogador.get().getHerois();
+		
+		return new JogadorHeroiModel(jogador.get(), herois, new Long(herois.size()));
 	}
 }

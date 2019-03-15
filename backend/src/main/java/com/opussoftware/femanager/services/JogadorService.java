@@ -71,7 +71,7 @@ public class JogadorService {
 			return null;
 		}
 		
-		return new JogadorHeroiModel(j.get(), j.get().getHerois());
+		return new JogadorHeroiModel(j.get(), j.get().getHerois(), 0);
 	}
 	
 	public Optional<Jogador> findOne(Long id) {

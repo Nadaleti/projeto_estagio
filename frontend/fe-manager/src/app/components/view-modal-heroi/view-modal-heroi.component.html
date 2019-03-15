@@ -27,7 +27,29 @@
         <p><span>Classe: </span> <span>{{heroi.classe}}</span> </p>
         <p><span>Movimentação: </span> <span>{{heroi.movimentacao}}</span></p>
 
-        <p *ngIf="raridade"><span>Raridade: </span> <span>{{raridade}}</span></p> 
+        <p *ngIf="raridade"><span>Raridade: </span> 
+            <span [ngSwitch]="raridade">
+                <span *ngSwitchCase="5">
+                    <mat-icon class="gold">star</mat-icon>
+                    <mat-icon class="gold">star</mat-icon>
+                    <mat-icon class="gold">star</mat-icon>
+                    <mat-icon class="gold">star</mat-icon>
+                    <mat-icon class="gold">star</mat-icon>
+                </span>
+                <span *ngSwitchCase="4">
+                    <mat-icon class="silver">star</mat-icon>
+                    <mat-icon class="silver">star</mat-icon>
+                    <mat-icon class="silver">star</mat-icon>
+                    <mat-icon class="silver">star</mat-icon>
+                </span>
+                <span *ngSwitchCase="3">
+                    <mat-icon class="coper">star</mat-icon>
+                    <mat-icon class="coper">star</mat-icon>
+                    <mat-icon class="coper">star</mat-icon>
+                </span>
+                <span *ngSwitchDefault>Sem raridade :(</span>
+            </span>
+        </p> 
         <p *ngIf="nivel"><span>Nível: </span> <span>{{nivel}}</span></p> 
 
         <mat-list>

@@ -9,10 +9,12 @@ public class JogadorHeroiModel {
 
 	private Jogador jogador;
 	private List<Heroi_jogador> herois;
+	private int total;
 
-	public JogadorHeroiModel(Jogador jogador, List<Heroi_jogador> herois) {
+	public JogadorHeroiModel(Jogador jogador, List<Heroi_jogador> herois, int total) {
 		this.jogador = jogador;
 		this.herois = herois;
+		this.total = total;
 	}
 
 	public List<Heroi_jogador> getHerois() {
@@ -31,4 +33,11 @@ public class JogadorHeroiModel {
 		this.jogador = jogador;
 	}
 
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
 }

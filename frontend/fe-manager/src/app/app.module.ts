@@ -21,6 +21,7 @@ import { JogadorListComponent } from './components/jogador-list/jogador-list.com
 import { JogadorModalComponent } from './components/jogador-modal/jogador-modal.component';
 import { SummonComponent } from './components/summon/summon.component';
 import { JogadorComponent } from './components/jogador/jogador.component';
+import { HeroiJogadorListComponent } from './components/heroi-jogador-list/heroi-jogador-list.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { JogadorComponent } from './components/jogador/jogador.component';
     JogadorListComponent,
     JogadorModalComponent,
     SummonComponent,
-    JogadorComponent
+    JogadorComponent,
+    HeroiJogadorListComponent
   ],
   imports: [
     BrowserModule,
