@@ -7,6 +7,7 @@ import { merge, fromEvent, from } from 'rxjs';
 import { Heroi } from 'src/app/models/heroi';
 import { ViewModalHeroiComponent } from '../view-modal-heroi/view-modal-heroi.component';
 import { Jogo } from 'src/app/models/jogo';
+import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
 
 @Component({
   selector: 'app-heroi-list',
@@ -84,7 +85,31 @@ export class HeroiListComponent implements OnInit, AfterViewInit {
     })
   }
 
-  delete(heroi){
-    console.log(heroi.id)
+  delete(heroi: Heroi){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '500px';
+    dialogConfig.data = {
+        modalType: '',
+        id: heroi.id,
+        modalContent: heroi.nome
+    }
+
+    let dialogRef = this.dialog.open(DeleteModalComponent, dialogConfig);
+    
+    dialogRef.afterClosed().subscribe(
+      data => {
+        if (data) {
+            if (this.paginator.length % this.paginator.pageSize === 1 && !this.paginator.hasNextPage()) {
+                this.paginator.previousPage();
+                this.heroiDatasource.deleteHeroi(data, -1, this.paginator.pageSize, this.sort.active, this.sort.direction.toString(), this.inputNome.nativeElement.value, 
+                (!this.inputClasse.value) ? "" : this.inputClasse.value, 
+                (!this.inputMov.value) ? "" : this.inputMov.value);
+            } else
+                this.heroiDatasource.deleteHeroi(data, this.paginator.pageIndex, this.paginator.pageSize, this.sort.active, this.sort.direction.toString(), this.inputNome.nativeElement.value, 
+                (!this.inputClasse.value) ? "" : this.inputClasse.value, 
+                (!this.inputMov.value) ? "" : this.inputMov.value);
+        }
+      }
+    );
   }
 }

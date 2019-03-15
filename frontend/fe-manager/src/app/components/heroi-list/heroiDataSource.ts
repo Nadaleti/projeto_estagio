@@ -31,4 +31,14 @@ export class HeroiDatasource extends DataSource<Heroi> {
             )
             .subscribe();
     }
+
+    deleteHeroi(id:number, page: number, size: number, sortParam: String, sortType: String,
+        nomeFilter: String, classeFilter: String, movFilter: String) {
+        this.heroiService.deleteHeroi(id)
+            .subscribe(_ => {
+                if (page >= 0)
+                    this.loadHerois(page, size, sortParam, sortType, nomeFilter, classeFilter, movFilter)
+            });
+        
+    }
 }

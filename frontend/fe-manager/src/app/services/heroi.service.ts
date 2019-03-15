@@ -41,4 +41,8 @@ export class HeroiService {
     return this.http.get<Jogo[]>(this.heroiUrl + '-jogos/' + id);
   }
 
+  deleteJogo(id: number): Observable<Jogo> {
+    return this.http.delete<Jogo>(this.heroiUrl+'/'+id);
+  }
+
 }
