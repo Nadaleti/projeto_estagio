@@ -8,7 +8,7 @@
 
 <mat-dialog-content>
 
-  <mat-tab-group mat-align-tabs="center">
+  <mat-tab-group mat-align-tabs="center" animationDuration="0ms">
     <mat-tab label="Dados">
 
       <div class="imagem">
@@ -16,16 +16,16 @@
       </div>
 
       <div class="status">
-        <h2>{{heroi.nome}}</h2> 
-        <h3>{{heroi.alcunha}}</h3>
+        <h2 matTooltip="Nome do herói. Pode existir mais com o mesmo nome." matTooltipPosition="left">{{heroi.nome}}</h2> 
+        <h3 matTooltip="A alcunha. Forma de diferenciar heróis, mesmo com nomes iguais." matTooltipPosition="left">{{heroi.alcunha}}</h3>
 
         <mat-list>
           <mat-divider></mat-divider>
         </mat-list>
 
 
-        <p><span>Classe: </span> <span>{{heroi.classe}}</span> </p>
-        <p><span>Movimentação: </span> <span>{{heroi.movimentacao}}</span></p>
+        <p matTooltip="Classe do herói identificando cor, forma de ataque e armas/habilidades que pode usar." matTooltipPosition="left"><span>Classe: </span> <span>{{heroi.classe}}</span> </p>
+        <p matTooltip="Forma de movimentação que define quantos espaços anda e como interage com obstáculos." matTooltipPosition="left"><span>Movimentação: </span> <span>{{heroi.movimentacao}}</span></p>
 
         <p *ngIf="raridade"><span>Raridade: </span> <span>{{raridade}}</span></p> 
         <p *ngIf="nivel"><span>Nível: </span> <span>{{nivel}}</span></p> 
@@ -34,11 +34,11 @@
           <mat-divider></mat-divider>
         </mat-list>
       
-        <p><span>HP: </span> <span>{{heroi.hp}}</span></p>
-        <p><span>ATK: </span> <span>{{heroi.atk}}</span></p>
-        <p><span>SPD: </span> <span>{{heroi.spd}}</span></p> 
-        <p><span>DEF: </span> <span>{{heroi.def}}</span></p> 
-        <p><span>RES: </span> <span>{{heroi.res}}</span></p>
+        <p matTooltip="Hit Points: ao atingir 0, a personagem é derrotada." matTooltipPosition="left"><span >HP: </span> <span>{{heroi.hp}}</span></p>
+        <p matTooltip="Attack (Ataque): quanto maior o ataque, maior o dano causado em inimigos" matTooltipPosition="left"><span>ATK: </span> <span>{{heroi.atk}}</span></p>
+        <p matTooltip="Speed (Velocidade): ataca duas vezes se a velocidade é pelo menos 5 a mais que a velocidade do inimigo." matTooltipPosition="left"><span>SPD: </span> <span>{{heroi.spd}}</span></p> 
+        <p matTooltip="Defense (Defesa): quanto maior a defesa, menos dano recebe de ataques físicos." matTooltipPosition="left"><span>DEF: </span> <span>{{heroi.def}}</span></p> 
+        <p matTooltip="Resistance (Resistência): quanto maior a resistência, menos dano recebe de ataques mágicos." matTooltipPosition="left"><span>RES: </span> <span>{{heroi.res}}</span></p>
       </div>  
 
 

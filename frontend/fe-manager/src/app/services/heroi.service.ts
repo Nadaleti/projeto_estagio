@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { HeroiModel } from '../models/heroiModel';
 import { Jogo } from '../models/jogo';
+import { Heroi } from '../models/heroi';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -41,8 +42,16 @@ export class HeroiService {
     return this.http.get<Jogo[]>(this.heroiUrl + '-jogos/' + id);
   }
 
-  deleteJogo(id: number): Observable<Jogo> {
-    return this.http.delete<Jogo>(this.heroiUrl+'/'+id);
+  createJogo(heroi: Heroi): Observable<Heroi> {
+    return this.http.post<Heroi>(this.heroiUrl, heroi);
+  }
+
+  updateHeroi(heroi: Heroi): Observable<Heroi> {
+    return this.http.put<Heroi>(this.heroiUrl+'/'+heroi.id, heroi);
+  }
+
+  deleteHeroi(id: number): Observable<Heroi> {
+    return this.http.delete<Heroi>(this.heroiUrl+'/'+id);
   }
 
 }

@@ -32,6 +32,17 @@ export class HeroiDatasource extends DataSource<Heroi> {
             .subscribe();
     }
 
+    createHeroi(heroi: Heroi) {
+        this.heroiService.createJogo(heroi)
+            .subscribe();
+    }
+
+    updateHeroi(heroi: Heroi, page: number, size: number, sortParam: String, sortType: String,
+        nomeFilter: String, classeFilter: String, movFilter: String) {
+        this.heroiService.updateHeroi(heroi)
+            .subscribe(_ => this.loadHerois(page, size, sortParam, sortType, nomeFilter, classeFilter, movFilter));
+    }
+
     deleteHeroi(id:number, page: number, size: number, sortParam: String, sortType: String,
         nomeFilter: String, classeFilter: String, movFilter: String) {
         this.heroiService.deleteHeroi(id)

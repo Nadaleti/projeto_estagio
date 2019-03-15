@@ -8,6 +8,7 @@ import { Heroi } from 'src/app/models/heroi';
 import { ViewModalHeroiComponent } from '../view-modal-heroi/view-modal-heroi.component';
 import { Jogo } from 'src/app/models/jogo';
 import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
+import { HeroiModalComponent } from '../heroi-modal/heroi-modal.component';
 
 @Component({
   selector: 'app-heroi-list',
@@ -78,6 +79,43 @@ export class HeroiListComponent implements OnInit, AfterViewInit {
 
     return this.dialog.open(ViewModalHeroiComponent, config);
   }
+
+  openEditDialog(heroi: Heroi, title: string): MatDialogRef<HeroiModalComponent> {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '700px';
+    dialogConfig.data = {
+        title: title,
+        heroi: heroi
+    }
+
+    return this.dialog.open(HeroiModalComponent, dialogConfig);
+  }
+
+  edit(heroi: Heroi) {
+    let dialogRef = this.openEditDialog(heroi, 'Editar');
+
+    dialogRef.afterClosed().subscribe(
+        data => {
+            if (data) {
+                this.heroiDatasource.updateHeroi(data, this.paginator.pageIndex, this.paginator.pageSize, this.sort.active, this.sort.direction.toString(), this.inputNome.nativeElement.value, 
+                (!this.inputClasse.value) ? "" : this.inputClasse.value, 
+                (!this.inputMov.value) ? "" : this.inputMov.value);
+            }
+        }
+    );
+}
+
+  create() {
+    let dialogRef = this.openEditDialog(null, 'Novo Heroi/Heroína');
+
+    dialogRef.afterClosed().subscribe(
+        data => {
+            if (data) {
+                this.heroiDatasource.createHeroi(data);
+            }
+        }
+    );
+}
 
   viewHero(row : Heroi){
     this.heroiService.getJogos(row.id).subscribe ( jogos => {

@@ -82,7 +82,7 @@
     <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef></th>
         <td class="button" mat-cell *matCellDef="let heroi" (click)="$event.stopPropagation()">
-            <button mat-icon-button >
+            <button mat-icon-button (click)="edit(heroi)">
                 <mat-icon>create</mat-icon>
             </button>
         </td>
@@ -107,3 +107,7 @@
 <div *ngIf="zeroItems()" class="mat-body mat-elevation-z2 emptyResult">Nenhum herói ou heroína encontrados...</div>
 <mat-paginator class="mat-elevation-z2" [length]="heroiDatasource.total$ | async" [pageSize]="10"
                [pageSizeOptions]="[5, 7, 10]"></mat-paginator>
+
+<button mat-fab (click)="create()" class="add-btn">
+    <mat-icon>add</mat-icon>
+</button>

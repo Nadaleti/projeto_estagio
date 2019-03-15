@@ -9,7 +9,7 @@ import { MatSidenavModule, MatExpansionModule, MatTableModule,
   MatSortModule, MatFormFieldModule,  MatIconModule, MatButtonModule,
   MatDialogModule, MatButtonToggleModule, MatSelectModule, 
   MatGridListModule, MatCardModule, MatTabsModule, MatDividerModule ,
-  MatListModule, MatRadioModule, MatAutocompleteModule} from '@angular/material';
+  MatListModule, MatRadioModule, MatAutocompleteModule, MatTooltipModule} from '@angular/material';
 
 import { JogoListComponent } from './components/jogo-list/jogo-list.component';
 import { HeroiListComponent } from './components/heroi-list/heroi-list.component';
@@ -21,6 +21,7 @@ import { JogadorListComponent } from './components/jogador-list/jogador-list.com
 import { JogadorModalComponent } from './components/jogador-modal/jogador-modal.component';
 import { SummonComponent } from './components/summon/summon.component';
 import { JogadorComponent } from './components/jogador/jogador.component';
+import { HeroiModalComponent } from './components/heroi-modal/heroi-modal.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { JogadorComponent } from './components/jogador/jogador.component';
     JogadorListComponent,
     JogadorModalComponent,
     SummonComponent,
-    JogadorComponent
+    JogadorComponent,
+    HeroiModalComponent
   ],
   imports: [
     BrowserModule,
@@ -60,11 +62,12 @@ import { JogadorComponent } from './components/jogador/jogador.component';
     MatDividerModule,
     MatListModule,
     MatAutocompleteModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [JogoModalComponent, JogadorModalComponent, ViewModalHeroiComponent, DeleteModalComponent, SummonComponent]
+  entryComponents: [JogoModalComponent, JogadorModalComponent, ViewModalHeroiComponent, DeleteModalComponent, SummonComponent, HeroiModalComponent]
 
 })
 
