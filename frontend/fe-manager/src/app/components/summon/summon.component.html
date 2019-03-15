@@ -21,7 +21,6 @@
         </div>
     </ng-template>
     <ng-template #showHeroi>
-        <mat-spinner *ngIf="load"></mat-spinner>
-        <p *ngIf="heroi">{{heroi.heroi.nome}}</p>
+        <mat-spinner *ngIf="load" [diameter]="100"></mat-spinner>
     </ng-template>
 </mat-dialog-content>
