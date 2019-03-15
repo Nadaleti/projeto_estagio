@@ -120,6 +120,14 @@ public class Jogador {
 	public void setNum_herois(int num_herois) {
 		this.num_herois = num_herois;
 	}
+	
+	public void addHeroi() {
+		this.num_herois += 1;
+	}
+	
+	public void delHeroi() {
+		this.num_herois -= 1;
+	}
 
 	public void setSexo(String sexo) {
 		this.sexo = sexo;

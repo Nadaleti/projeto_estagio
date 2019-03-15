@@ -7,5 +7,5 @@
 </div>
 
 <div *ngIf="jogador$ | async as jogador">
-    <app-summon [nome]="jogador.jogador.nome"></app-summon>
+    <button mat-button (click)="openSummon(jogador.jogador.nome)">Summon</button>
 </div>

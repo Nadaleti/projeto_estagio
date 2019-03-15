@@ -7,7 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { MatSidenavModule, MatExpansionModule, MatTableModule, 
   MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, 
   MatSortModule, MatFormFieldModule,  MatIconModule, MatButtonModule,
-  MatDialogModule, MatButtonToggleModule, MatRadioModule, MatSelectModule, MatAutocompleteModule} from '@angular/material';
+  MatDialogModule, MatButtonToggleModule, MatRadioModule, MatSelectModule,
+  MatAutocompleteModule} from '@angular/material';
 
 import { JogoListComponent } from './components/jogo-list/jogo-list.component';
 import { HeroiListComponent } from './components/heroi-list/heroi-list.component';
@@ -51,11 +52,12 @@ import { JogadorComponent } from './components/jogador/jogador.component';
     ReactiveFormsModule,
     MatRadioModule,
     MatSelectModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [JogoModalComponent, JogadorModalComponent, DeleteModalComponent]
+  entryComponents: [JogoModalComponent, JogadorModalComponent, DeleteModalComponent, SummonComponent]
 })
 
 export class AppModule { }

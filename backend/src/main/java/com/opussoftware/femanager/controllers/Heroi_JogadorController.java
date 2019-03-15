@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,9 +19,9 @@ public class Heroi_JogadorController {
 	@Autowired
 	private Heroi_JogadorService heroi_JogadorService;
 	
-	@PostMapping(path = "/summon")
-	public Heroi_jogador summon(@RequestBody Heroi_jogador heroi_jogador) {
-		return this.heroi_JogadorService.summon(heroi_jogador);
+	@PostMapping(path = "/summon/{color}")
+	public Heroi_jogador summon(@RequestBody Heroi_jogador heroi_jogador, @PathVariable String color) {
+		return this.heroi_JogadorService.summon(heroi_jogador, color);
 	}
 	
 	@GetMapping(path = "/summon/jogadores")
