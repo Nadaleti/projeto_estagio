@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Jogador } from '../models/jogador';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { JogadorModel } from '../models/jogadorModel';
+import { JogadorHeroiModel } from '../models/JogadorHeroiModel';
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -26,6 +27,12 @@ export class JogadorService {
             .set('filter', filter);
 
         return this.http.get<JogadorModel>(this.jogadorUrl, httpOptions);
+    }
+
+    getJogador(id: string): Observable<JogadorHeroiModel> {
+        httpOptions.params = httpOptions.params.set('id', id);
+
+        return this.http.get<JogadorHeroiModel>(this.jogadorUrl+'/'+id);
     }
 
     updateJogador(jogador: Jogador) {

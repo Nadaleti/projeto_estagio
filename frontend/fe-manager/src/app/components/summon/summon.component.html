@@ -1,9 +1,27 @@
-<mat-form-field>
-    <input type="text" matInput [formControl]="jogadorSearch" [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let jogador of jogadoresFiltrados | async" [value]="jogador.nome">
-            {{jogador.nome}}
-        </mat-option>
-    </mat-autocomplete>
-</mat-form-field>
-<button mat-flat-button (click)="getHeroiJogador()" class="mat-primary">Summon</button>
+<h2 mat-dialog-title>Summon</h2>
+
+<mat-dialog-content>
+    <mat-form-field *ngIf="!nome">
+        <input type="text" matInput [formControl]="jogadorSearch" [matAutocomplete]="auto" placeholder="Digite o nome do jogador...">
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let jogador of jogadoresFiltrados | async" [value]="jogador.nome">
+                {{jogador.nome}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+    <div *ngIf="!heroi && !load; then optionsToSummon; else showHeroi"></div>
+    <ng-template #optionsToSummon>
+        <div class="options">
+            <div><button mat-fab (click)="getHeroiJogador('red')" class="redOpt">Red</button></div>
+            <div>
+                <button mat-fab (click)="getHeroiJogador('green')" class="greenOpt">Green</button>
+                <button mat-fab (click)="getHeroiJogador('blue')" class="blueOpt">Blue</button>
+            </div>
+            <div><button mat-fab (click)="getHeroiJogador('colorless')" class="greyOpt">Colorless</button></div>
+        </div>
+    </ng-template>
+    <ng-template #showHeroi>
+        <mat-spinner *ngIf="load"></mat-spinner>
+        <p *ngIf="heroi">{{heroi.heroi.nome}}</p>
+    </ng-template>
+</mat-dialog-content>

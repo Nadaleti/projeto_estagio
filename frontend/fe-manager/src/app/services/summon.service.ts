@@ -13,10 +13,10 @@ export class SummonService {
 
     url: string = "http://localhost:8080/summon";
 
-    getHeroiJogador(jogador: Jogador): Observable<heroiJogador> {
+    getHeroiJogador(jogador: Jogador, color: string): Observable<heroiJogador> {
         let heroi = new heroiJogador(null, null, jogador, 0, 1);
 
-        return this.http.post<heroiJogador>(this.url, heroi);
+        return this.http.post<heroiJogador>(this.url+'/'+color, heroi);
     }
 
     getAllJogadores(): Observable<Jogador[]> {

@@ -88,4 +88,8 @@ public class HeroiService {
 		heroi.setId(id);
 		return this.heroiRepository.saveAndFlush(heroi);
 	}
+	
+	public List<Heroi> getHeroiByClass(String color, String classColor) {
+		return this.heroiRepository.getHeroiByClass("%" + color + "%", "%" + classColor + "%");
+	}
 }

@@ -6,6 +6,7 @@ import { tap } from 'rxjs/operators';
 import { Jogador } from 'src/app/models/jogador';
 import { JogadorModalComponent } from '../jogador-modal/jogador-modal.component';
 import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-jogador-list',
@@ -21,7 +22,8 @@ export class JogadorListComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     constructor(private jogadorService: JogadorService,
-                private dialog: MatDialog) { }
+                private dialog: MatDialog,
+                private router: Router) { }
 
     ngOnInit() {
         this.jogadorDataSource = new JogadorDataSource(this.jogadorService);
@@ -83,6 +85,10 @@ export class JogadorListComponent implements OnInit {
                 }
             }
         );
+    }
+
+    navigateToJogador(jogador: Jogador) {
+        this.router.navigate(['/jogadores', jogador.id]);
     }
 
     zeroItems(): boolean {
