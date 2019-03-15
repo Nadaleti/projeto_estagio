@@ -24,12 +24,7 @@ export class ViewModalHeroiComponent implements OnInit {
     console.log(this.jogos);
     }
 
-  ngOnInit() {
-    heroi: undefined;
-    jogos: undefined;
-    raridade: undefined;
-    nivel: undefined;
-  }
+  ngOnInit() { }
 
   close(){
     this.dialogRef.close();

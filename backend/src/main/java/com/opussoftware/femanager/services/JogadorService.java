@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.opussoftware.femanager.entities.Jogo;
 import com.opussoftware.femanager.entities.Jogador;
+import com.opussoftware.femanager.models.JogadorHeroiModel;
 import com.opussoftware.femanager.models.JogadorModel;
 import com.opussoftware.femanager.models.JogoModel;
 import com.opussoftware.femanager.repositories.JogadorRepository;
@@ -61,6 +62,16 @@ public class JogadorService {
 		this.jogadorRepository.deleteById(id);
 		
 		return true;
+	}
+	
+	public JogadorHeroiModel getOneJogador(Long id) {
+		Optional<Jogador> j = this.jogadorRepository.findById(id);
+		
+		if (!j.isPresent()) {
+			return null;
+		}
+		
+		return new JogadorHeroiModel(j.get(), j.get().getHerois());
 	}
 	
 	public Optional<Jogador> findOne(Long id) {

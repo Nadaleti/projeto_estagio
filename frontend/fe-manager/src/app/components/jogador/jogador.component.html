@@ -1,0 +1,11 @@
+<h2 class="mat-display-2" *ngIf="jogador$ | async as jogador">
+    {{jogador.jogador.nome}}
+</h2>
+
+<div *ngIf="jogador$ | async as jogador">
+    <p *ngFor="let heroi of jogador.herois">{{heroi.heroi.nome}} {{heroi.heroi.alcunha}} {{heroi.raridade}}</p>
+</div>
+
+<div *ngIf="jogador$ | async as jogador">
+    <button mat-button (click)="openSummon(jogador.jogador.nome)">Summon</button>
+</div>

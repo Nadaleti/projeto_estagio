@@ -1,5 +1,8 @@
 <div class="title">
-  <h2 mat-dialog-title>Sobre {{heroi.nome}} - {{heroi.alcunha}} </h2>
+  <h2 mat-dialog-title *ngIf="!raridade; else summon">Sobre {{heroi.nome}} - {{heroi.alcunha}} </h2>
+  <ng-template #summon>
+        <h2 mat-dialog-title>Você conseguiu {{heroi.nome}} - {{heroi.alcunha}} ! </h2>
+  </ng-template>
   <button mat-button mat-dialog-close><mat-icon>close</mat-icon></button> 
 </div>
 

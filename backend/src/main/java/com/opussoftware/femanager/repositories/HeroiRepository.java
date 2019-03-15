@@ -20,4 +20,7 @@ public interface HeroiRepository extends JpaRepository<Heroi, Long> {
 
 	public List<Heroi> findByMovimentacaoContaining(String movimentacao, Sort sort);
 
+	@Query("SELECT h FROM Heroi h WHERE lower(h.classe) like :color or lower(h.classe) like :classColor")
+	public List<Heroi> getHeroiByClass(String color, String classColor);
+
 }

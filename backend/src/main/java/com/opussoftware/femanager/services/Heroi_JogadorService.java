@@ -26,15 +26,29 @@ public class Heroi_JogadorService {
 	private HeroiService heroiService;
 
 	// Adicionar novo heroi_jogador
-	public Heroi_jogador summon(Heroi_jogador heroi_jogador) {
+	public Heroi_jogador summon(Heroi_jogador heroi_jogador, String color) {
 		Optional<Jogador> jogador = this.jogadorService.findOne(heroi_jogador.getJogador().getId());
 		
 		if (!jogador.isPresent()) {
 			return null;
 		}
 		
+		jogador.get().addHeroi();
+		
 		Random rand = new Random();
-		List<Heroi> herois = this.heroiService.getAllHeroi();
+		
+		String classColor;
+		if (color.equals("red")) {
+			classColor = "sword";
+		} else if (color.equals("blue")) {
+			classColor = "lance";
+		} else if (color.equals("green")) {
+			classColor = "axe";
+		} else {
+			classColor = "staff";
+		}
+		
+		List<Heroi> herois = this.heroiService.getHeroiByClass(color, classColor);
 		
 		Heroi heroi = herois.get(rand.nextInt(herois.size()));		
 		

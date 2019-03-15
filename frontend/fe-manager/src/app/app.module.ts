@@ -20,6 +20,7 @@ import { ViewModalHeroiComponent } from './components/view-modal-heroi/view-moda
 import { JogadorListComponent } from './components/jogador-list/jogador-list.component';
 import { JogadorModalComponent } from './components/jogador-modal/jogador-modal.component';
 import { SummonComponent } from './components/summon/summon.component';
+import { JogadorComponent } from './components/jogador/jogador.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SummonComponent } from './components/summon/summon.component';
     ViewModalHeroiComponent,
     JogadorListComponent,
     JogadorModalComponent,
-    SummonComponent
+    SummonComponent,
+    JogadorComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,8 @@ import { SummonComponent } from './components/summon/summon.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [JogoModalComponent, JogadorModalComponent, ViewModalHeroiComponent, DeleteModalComponent]
+  entryComponents: [JogoModalComponent, JogadorModalComponent, ViewModalHeroiComponent, DeleteModalComponent, SummonComponent]
+
 })
 
 export class AppModule { }

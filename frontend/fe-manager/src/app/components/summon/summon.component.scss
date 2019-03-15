@@ -1,0 +1,49 @@
+mat-form-field {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+// Personalização dos botões
+.redOpt {
+    background-color: rgba($color: #e50d0d, $alpha: 1.0)
+}
+
+.blueOpt {
+    background-color: rgba($color: #1c59bc, $alpha: 1.0)
+}
+
+.greenOpt {
+    background-color: rgba($color: #0daf0d, $alpha: 1.0)
+}
+
+.greyOpt {
+    background-color: rgba($color: #7a7a7a, $alpha: 1.0);
+    font-size: .75rem
+}
+
+// Organização dos botões
+.options {
+    div {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    div:nth-child(n) {
+        justify-content: center;
+    }
+
+    div:nth-child(2n) {
+        justify-content: space-between;
+        margin: 30px auto;
+    }
+}
+
+// Personalização de spinner
+.mat-spinner {
+    margin: 0 auto;
+}
+
+mat-dialog-content {
+    overflow-y: hidden;
+}
